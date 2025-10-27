@@ -45,7 +45,7 @@ export default function AstroPhotographyGallery() {
   className="absolute inset-0 w-full h-full object-cover"
 >
   <source
-    src="/videos/astrophotography.mp4"
+    src="https://res.cloudinary.com/dvp5iw3kj/video/upload/v1761590916/AstroPhotography_irzuak.mp4"
     type="video/mp4"
   />
 </video>
