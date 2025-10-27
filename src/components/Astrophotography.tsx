@@ -38,13 +38,18 @@ export default function AstroPhotographyGallery() {
       {/* 🎥 Header with Video */}
       <section className="relative h-[80vh] w-full flex items-center justify-center text-center">
         <video
-          src="/videos/Astrophotography.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="absolute inset-0 w-full h-full object-cover"
+>
+  <source
+    src="/videos/astrophotography.mp4"
+    type="video/mp4"
+  />
+</video>
+
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 px-6">
           <h1 className="text-[32px] md:text-5xl font-bold tracking-widest mb-4">
