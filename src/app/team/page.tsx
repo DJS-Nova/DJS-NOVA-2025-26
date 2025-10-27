@@ -41,7 +41,7 @@ interface TeamData {
 }
 
 // Sample data structure - replace with your actual data
- const teamsData: TeamData[] = [
+const teamsData: TeamData[] = [
   {
     tenure: "2025",
     board: {
@@ -290,7 +290,11 @@ const MemberCard = ({ member }: { member: Member }) => {
             <img
               src={member.image}
               alt={member.name}
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+              className="
+    w-full h-full object-cover 
+    grayscale group-hover:grayscale-0 transition-all duration-300
+    max-sm:grayscale-0
+  "
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-6xl font-bold">
@@ -379,40 +383,40 @@ export default function TeamShowcase() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-4 mt-4 tracking-[0.15em]">
+          <h1 className=" text-4xl md:text-5xl font-bold text-white mb-4 mt-4 tracking-[0.15em]">
             DJS Nova Space Committee
           </h1>
-          <p className="text-slate-400 text-lg tracking-[0.25em]">Meet Our Stellar Team</p>
+          <p className="text-slate-400 text-lg tracking-[0.25em]">
+            Meet Our Stellar Team
+          </p>
         </div>
 
         {/* Team Sections */}
         <div className="space-y-6">
           {teamsData.map((team, index) => (
-            <div
-              key={index}
-              className=" rounded-xl overflow-hidden "
-            >
+            <div key={index} className=" rounded-xl overflow-hidden ">
               {/* Tenure Header */}
-              {teamsData.length > 1 && <button
-                onClick={() => toggleTenure(index)}
-                className="w-full flex items-center justify-between p-6 bg-slate-900/30 hover:bg-slate-800/30 transition-colors"
-              >
-                <div className="flex items-center gap-4">
-                  {/* <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
+              {teamsData.length > 1 && (
+                <button
+                  onClick={() => toggleTenure(index)}
+                  className="w-full flex items-center justify-between p-6 bg-slate-900/30 hover:bg-slate-800/30 transition-colors"
+                >
+                  <div className="flex items-center gap-4">
+                    {/* <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
                     {team.tenure.slice(2, 4)}
                   </div> */}
-                  <h2 className="text-2xl font-bold text-white">
-                    Team {team.tenure}
-                  </h2>
-                </div>
-                <ChevronDown
-                  className={`text-slate-400 transition-transform duration-300 ${
-                    expandedTenure === index ? "rotate-180" : ""
-                  }`}
-                  size={24}
-                />
-              </button>
-}
+                    <h2 className="text-2xl font-bold text-white">
+                      Team {team.tenure}
+                    </h2>
+                  </div>
+                  <ChevronDown
+                    className={`text-slate-400 transition-transform duration-300 ${
+                      expandedTenure === index ? "rotate-180" : ""
+                    }`}
+                    size={24}
+                  />
+                </button>
+              )}
               {/* Team Content */}
               <div
                 className={`overflow-hidden transition-all duration-500 ${

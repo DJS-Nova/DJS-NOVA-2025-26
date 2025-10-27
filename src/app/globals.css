@@ -26,7 +26,7 @@ body {
 }
 
 button {
- cursor: pointer;
+  cursor: pointer;
 }
 
 a {
@@ -57,7 +57,8 @@ a {
 
 /* For transform-gpu enabling translateZ effect */
 .rotate-x-\[calc\(var\(--i\)\*22\.5deg\)\] {
-  transform: translate(-50%, -50%) rotateX(calc(var(--i) * 22.5deg)) translateZ(109px);
+  transform: translate(-50%, -50%) rotateX(calc(var(--i) * 22.5deg))
+    translateZ(109px);
 }
 
 /* Ensure the 3D container takes full available space */
@@ -66,7 +67,6 @@ a {
   height: 100% !important;
   min-height: 400px;
 }
-
 
 .overlay {
   position: fixed;
@@ -94,17 +94,40 @@ a {
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
 }
 
 @keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeInWhenVisible {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Flip card utilities */
@@ -123,4 +146,3 @@ a {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
-

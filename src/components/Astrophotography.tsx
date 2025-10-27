@@ -47,7 +47,7 @@ export default function AstroPhotographyGallery() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 px-6">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-widest mb-4">
+          <h1 className="text-[32px] md:text-5xl font-bold tracking-widest mb-4">
             Our Astrophotography Showcase
           </h1>
           <p className="max-w-2xl mx-auto text-gray-300 text-sm md:text-base leading-relaxed tracking-[0.25px]">
@@ -82,13 +82,24 @@ export default function AstroPhotographyGallery() {
                 height={600}
                 className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+
+              {/* Overlay for desktop hover */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:flex items-center justify-center">
                 <p className="text-center text-sm md:text-base">{item.desc}</p>
+              </div>
+
+              {/* Always visible description on mobile (appears when in viewport) */}
+              <div className="sm:hidden absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent text-white p-3 text-sm text-center opacity-0 animate-[fadeInWhenVisible_0.8s_forwards]">
+                {item.desc}
               </div>
             </div>
           ))}
         </div>
       </section>
+
+      <style jsx>{`
+        
+      `}</style>
 
       {/* 🖼️ Image Modal */}
       {selectedImage && (

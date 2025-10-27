@@ -45,80 +45,52 @@ interface Event {
 const eventsData: Event[] = [
   {
     id: "1",
-    title: "Space Tech Summit 2025",
+    title: "Moon Gazing 2025",
     description:
-      "Join us for an incredible journey through the latest advancements in space technology. This summit brings together industry leaders, researchers, and enthusiasts to explore the future of space exploration.",
-    date: "2025-11-15",
-    time: "10:00 AM - 6:00 PM",
-    location: "DJ Sanghvi Auditorium, Mumbai",
-    attendees: 500,
+      "Witness the magic of the night sky like never before! Join us for an enchanting evening of Moon Gazing filled with celestial activities.",
+    date: "2025-11-04",
+    time: "02:00 PM - 05:30 AM",
+    location: "College Terrace, DJ Sanghvi College of Engineering, Mumbai",
+    attendees: 300,
     status: "upcoming",
     featured: true,
-    coverImage:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=600&fit=crop",
+    coverImage: "/event/moon.jpg",
     gallery: [
       {
-        url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-        alt: "Space Tech Summit",
+        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+        alt: "Moon Gazing Night Sky",
       },
       {
-        url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
-        alt: "Technology Display",
+        url: "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800",
+        alt: "Telescope Setup",
       },
       {
-        url: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800",
-        alt: "Keynote Speaker",
+        url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800",
+        alt: "Astronomy Activities",
       },
       {
-        url: "https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800",
-        alt: "Audience View",
+        url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+        alt: "Moonlight Viewing",
       },
     ],
     details: {
       organizer: "DJS Nova Space Committee",
-      category: "Technology & Innovation",
+      category: "Astronomy & Night Observation",
       registrationLink: "#",
     },
     testimonials: [
       {
-        name: "Dr. Rajesh Kumar",
-        role: "ISRO Scientist",
+        name: "Dr. Meera Patel",
+        role: "Astronomer & Guest Speaker",
         comment:
-          "An exceptional event that showcased the future of space technology. The presentations were insightful and inspiring.",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rajesh",
+          "An awe-inspiring event that truly connected everyone with the wonders of our night sky. The Moon Gazing session was breathtaking!",
+        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Meera",
       },
     ],
   },
+
   {
     id: "2",
-    title: "AI in Astronomy Workshop",
-    description:
-      "Explore how artificial intelligence is revolutionizing astronomical research and space exploration.",
-    date: "2025-12-01",
-    time: "2:00 PM - 5:00 PM",
-    location: "Computer Lab 3, DJ Sanghvi",
-    attendees: 150,
-    status: "upcoming",
-    coverImage:
-      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1200&h=600&fit=crop",
-    gallery: [
-      {
-        url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800",
-        alt: "AI Workshop",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
-        alt: "Workshop Session",
-      },
-    ],
-    details: {
-      organizer: "DJS Nova Tech Team",
-      category: "Workshop",
-      registrationLink: "#",
-    },
-  },
-  {
-    id: "3",
     title: "Stargazing Night 2024",
     description:
       "A memorable evening under the stars where participants observed celestial objects through telescopes and learned about constellations.",
@@ -165,7 +137,7 @@ const eventsData: Event[] = [
     ],
   },
   {
-    id: "4",
+    id: "3",
     title: "Rocket Science Seminar",
     description:
       "An engaging seminar on rocket propulsion systems and the physics behind space travel.",
@@ -192,7 +164,7 @@ const eventsData: Event[] = [
     },
   },
   {
-    id: "5",
+    id: "4",
     title: "Space Photography Exhibition",
     description:
       "A stunning collection of astrophotography captured by students and professionals.",
@@ -385,7 +357,7 @@ const EventCard = ({
   return (
     <>
       <div
-        className="relative w-full h-[28rem] perspective"
+        className="relative w-full h-[30rem] perspective"
         onClick={() => {
           if (!flipped) onClick();
         }}
@@ -440,7 +412,7 @@ const EventCard = ({
                   </div>
                 </div>
 
-                <p className="text-slate-400 text-sm line-clamp-4 mb-4">
+                <p className="text-slate-400 text-sm line-clamp-5 mb-4">
                   {event.description}
                 </p>
               </div>
@@ -817,12 +789,12 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
               </div>
 
               <div className="absolute bottom-8 left-8 right-8">
-                <h3 className="text-4xl font-bold text-white mb-4">
+                <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">
                   {featuredEvent.title}
                 </h3>
 
                 <div className="flex flex-wrap gap-4 mb-4 text-slate-300">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 text-sm md:text-xl">
                     <Calendar size={18} className="text-blue-400" />
                     <span>
                       {new Date(featuredEvent.date).toLocaleDateString(
@@ -836,14 +808,16 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
                     </span>
                   </div>
                   {featuredEvent.location && (
-                    <div className="flex items-center gap-2">
-                      <MapPin size={18} className="text-red-400" />
-                      <span>{featuredEvent.location}</span>
+                    <div className="flex items-center gap-2 text-gray-300">
+                      <MapPin className="w-5 h-5 text-red-400 shrink-0" />
+                      <span className="text-sm md:text-xl font-medium">
+                        {featuredEvent.location}
+                      </span>
                     </div>
                   )}
                 </div>
 
-                <p className="text-slate-300 text-lg mb-4 line-clamp-2">
+                <p className="text-slate-300 text-sm md:text-lg mb-4 line-clamp-6">
                   {featuredEvent.description}
                 </p>
 
@@ -852,7 +826,7 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
                     e.stopPropagation();
                     setFlipped(true);
                   }}
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                  className="px-6 py-3 border-2 border-slate-500 text-white rounded-full transition-colors font-medium"
                   aria-pressed={flipped}
                   aria-label="View featured event details"
                 >
@@ -876,6 +850,8 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
                 {featuredEvent.description}
               </p>
             </div>
+
+            <h3>Past Glimps</h3>
 
             {/* Gallery area */}
             <div className="relative w-full flex items-center justify-center">
@@ -1043,11 +1019,7 @@ export default function EventsPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {pastEvents.map((event) => (
-              <EventCard
-                key={event.id}
-                event={event}
-                onClick={() => openEventDetails(event)}
-              />
+              <EventCard key={event.id} event={event} onClick={() => {}} />
             ))}
           </div>
         </div>
