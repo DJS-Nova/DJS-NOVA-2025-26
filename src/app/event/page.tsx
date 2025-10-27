@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import {
   Calendar,
   MapPin,
-  Clock,
-  Users,
   X,
   ChevronLeft,
   ChevronRight,
@@ -274,16 +272,16 @@ const GalleryModal = ({
 
       <div className="flex  flex-col items-center justify-center">
         <div className="max-w-6xl max-h-[90vh] w-full mx-4 flex items-center justify-center bg-black rounded-lg overflow-hidden">
-        <img
-          src={images[currentIndex].url}
-          alt={images[currentIndex].alt}
-          className="max-w-full max-h-[90vh] object-contain"
-        />
-      </div>
+          <img
+            src={images[currentIndex].url}
+            alt={images[currentIndex].alt}
+            className="max-w-full max-h-[90vh] object-contain"
+          />
+        </div>
 
-      <p className="text-white text-center mt-4 text-lg">
-        {currentIndex + 1} / {images.length}
-      </p>
+        <p className="text-white text-center mt-4 text-lg">
+          {currentIndex + 1} / {images.length}
+        </p>
       </div>
     </div>
   );
@@ -370,11 +368,9 @@ const EventCard = ({
 }) => {
   const [flipped, setFlipped] = useState(false);
   const [currentImg, setCurrentImg] = useState<number>(0);
-  const [zoomed, setZoomed] = useState(false);
 
-    const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
-
 
   const openGallery = (index: number) => {
     setGalleryIndex(index);
@@ -388,140 +384,142 @@ const EventCard = ({
 
   return (
     <>
-    <div
-      className="relative w-full h-[28rem] perspective"
-      onClick={() => {
-        if (!flipped) onClick();
-      }}
-    >
       <div
-        className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
-          flipped ? "rotate-y-180" : ""
-        }`}
+        className="relative w-full h-[28rem] perspective"
+        onClick={() => {
+          if (!flipped) onClick();
+        }}
       >
-        {/* FRONT SIDE */}
-        <div className="absolute w-full h-full backface-hidden bg-slate-900/50 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-blue-500/20">
-          <div className="relative h-48 overflow-hidden">
-            <img
-              src={event.coverImage}
-              alt={event.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
-            <div className="absolute top-4 left-4">
-              <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  event.status === "upcoming"
-                    ? "bg-green-500/20 text-green-400 border border-green-500/50"
-                    : "bg-slate-700/50 text-slate-300 border border-slate-600/50"
-                }`}
-              >
-                {event.status === "upcoming" ? "Coming Soon" : "Past Event"}
-              </span>
+        <div
+          className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
+            flipped ? "rotate-y-180" : ""
+          }`}
+        >
+          {/* FRONT SIDE */}
+          <div className="absolute w-full h-full backface-hidden bg-slate-900/50 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-blue-500/20">
+            <div className="relative h-48 overflow-hidden">
+              <img
+                src={event.coverImage}
+                alt={event.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
+              <div className="absolute top-4 left-4">
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    event.status === "upcoming"
+                      ? "bg-green-500/20 text-green-400 border border-green-500/50"
+                      : "bg-slate-700/50 text-slate-300 border border-slate-600/50"
+                  }`}
+                >
+                  {event.status === "upcoming" ? "Coming Soon" : "Past Event"}
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="p-6 flex flex-col justify-between h-[calc(100%-12rem)]">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-400/75 transition-colors">
-                {event.title}
-              </h3>
+            <div className="p-6 flex flex-col justify-between h-[calc(100%-12rem)]">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-400/75 transition-colors">
+                  {event.title}
+                </h3>
 
-              <div className="space-y-2 mb-4">
-                <div className="flex items-center gap-2 text-slate-400 text-sm">
-                  <Calendar size={16} className="text-blue-400" />
-                  <span>
-                    {new Date(event.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </span>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center gap-2 text-slate-400 text-sm">
+                    <Calendar size={16} className="text-blue-400" />
+                    <span>
+                      {new Date(event.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-400 text-sm">
+                    <MapPin size={16} className="text-red-400" />
+                    <span>{event.location}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 text-slate-400 text-sm">
-                  <MapPin size={16} className="text-red-400" />
-                  <span>{event.location}</span>
-                </div>
+
+                <p className="text-slate-400 text-sm line-clamp-4 mb-4">
+                  {event.description}
+                </p>
               </div>
 
-              <p className="text-slate-400 text-sm line-clamp-4 mb-4">
-                {event.description}
-              </p>
+              <div
+                className="flex items-center justify-between mt-auto"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFlipped(true);
+                }}
+              >
+                <span className="text-blue-400 text-sm font-medium">
+                  {event.gallery.length} Photos
+                </span>
+                <span className="text-slate-500 hover:text-amber-400/75 transition-colors">
+                  View Details →
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* BACK SIDE */}
+          <div className="absolute w-full h-full rotate-y-180 backface-hidden bg-slate-900/90 rounded-xl border border-slate-800 p-6 flex flex-col items-center justify-between">
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-white mb-2">
+                {event.title}
+              </h3>
+              <p className="text-slate-400 text-sm mb-4">{event.description}</p>
             </div>
 
-            <div
-              className="flex items-center justify-between mt-auto"
+            {/* Gallery Section */}
+            {event.gallery.length > 0 && (
+              <div className="relative w-full flex items-center justify-center">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrev();
+                  }}
+                  className="absolute left-2 p-2 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-50"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+
+                <img
+                  src={event.gallery[currentImg].url}
+                  alt={`Gallery ${currentImg + 1}`}
+                  className="w-full h-56 object-cover rounded-lg cursor-pointer transition-transform hover:scale-105"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openGallery(currentImg);
+                  }}
+                />
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                  }}
+                  className="absolute right-2 p-2 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-50"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            )}
+
+            <button
               onClick={(e) => {
                 e.stopPropagation();
-                setFlipped(true);
+                setFlipped(false);
               }}
+              className="mt-4 px-4 py-2 text-sm font-medium text-amber-400 border border-amber-400/50 rounded-md hover:bg-amber-400/10 transition"
             >
-              <span className="text-blue-400 text-sm font-medium">
-                {event.gallery.length} Photos
-              </span>
-              <span className="text-slate-500 hover:text-amber-400/75 transition-colors">
-                View Details →
-              </span>
-            </div>
+              Back
+            </button>
           </div>
         </div>
 
-        {/* BACK SIDE */}
-        <div className="absolute w-full h-full rotate-y-180 backface-hidden bg-slate-900/90 rounded-xl border border-slate-800 p-6 flex flex-col items-center justify-between">
-          <div className="text-center">
-            <h3 className="text-xl font-bold text-white mb-2">{event.title}</h3>
-            <p className="text-slate-400 text-sm mb-4">{event.description}</p>
-          </div>
-
-          {/* Gallery Section */}
-          {event.gallery.length > 0 && (
-            <div className="relative w-full flex items-center justify-center">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePrev();
-                }}
-                className="absolute left-2 p-2 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-50"
-              >
-                <ChevronLeft size={20} />
-              </button>
-
-              <img
-                src={event.gallery[currentImg].url}
-                alt={`Gallery ${currentImg + 1}`}
-                className="w-full h-56 object-cover rounded-lg cursor-pointer transition-transform hover:scale-105"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  openGallery(currentImg);
-                }}
-              />
-
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleNext();
-                }}
-                className="absolute right-2 p-2 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-50"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-          )}
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setFlipped(false);
-            }}
-            className="mt-4 px-4 py-2 text-sm font-medium text-amber-400 border border-amber-400/50 rounded-md hover:bg-amber-400/10 transition"
-          >
-            Back
-          </button>
-        </div>
-      </div>
-
-      {/* ZOOM IMAGE MODAL */}
-      {/* {zoomed && (
+        {/* ZOOM IMAGE MODAL */}
+        {/* {zoomed && (
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
           onClick={() => setZoomed(false)}
@@ -536,12 +534,8 @@ const EventCard = ({
           />
         </div>
       )} */}
-
-
-
-
-    </div>
-           <GalleryModal
+      </div>
+      <GalleryModal
         images={event.gallery}
         isOpen={galleryOpen}
         onClose={() => setGalleryOpen(false)}
@@ -747,7 +741,9 @@ const EventDetailsModal = ({
   );
 };
 
-const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({ featuredEvent }) => {
+const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
+  featuredEvent,
+}) => {
   // Flip state (front / back)
   const [flipped, setFlipped] = useState<boolean>(false);
 
@@ -806,9 +802,18 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({ featuredEvent }
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
               <div className="absolute top-6 left-6">
-                <span className="px-4 py-2 rounded-full text-sm font-semibold bg-green-500/20 text-green-400 border border-green-500/50">
-                  {featuredEvent.status === "upcoming" ? "Coming Soon" : "Featured"}
-                </span>
+                <div className="p-[2px] rounded-full bg-gradient-to-r from-amber-400 to-white">
+                  <span
+                    className="
+        block px-4 py-2 rounded-full text-sm font-semibold
+        bg-black/90 text-white
+      "
+                  >
+                    {featuredEvent.status === "upcoming"
+                      ? "Coming Soon"
+                      : "Featured"}
+                  </span>
+                </div>
               </div>
 
               <div className="absolute bottom-8 left-8 right-8">
@@ -820,11 +825,14 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({ featuredEvent }
                   <div className="flex items-center gap-2">
                     <Calendar size={18} className="text-blue-400" />
                     <span>
-                      {new Date(featuredEvent.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
+                      {new Date(featuredEvent.date).toLocaleDateString(
+                        "en-US",
+                        {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        }
+                      )}
                     </span>
                   </div>
                   {featuredEvent.location && (
@@ -864,7 +872,9 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({ featuredEvent }
               <h3 className="text-3xl font-bold text-white mb-2">
                 {featuredEvent.title}
               </h3>
-              <p className="text-slate-300 text-sm mb-4">{featuredEvent.description}</p>
+              <p className="text-slate-300 text-sm mb-4">
+                {featuredEvent.description}
+              </p>
             </div>
 
             {/* Gallery area */}
@@ -881,8 +891,14 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({ featuredEvent }
               {/* Image (contain with letterboxing) */}
               <div className="w-full max-w-4xl max-h-[60vh] bg-black rounded-lg overflow-hidden flex items-center justify-center">
                 <img
-                  src={featuredEvent.gallery?.[currentImg]?.url ?? featuredEvent.coverImage}
-                  alt={featuredEvent.gallery?.[currentImg]?.alt ?? `${featuredEvent.title} image ${currentImg + 1}`}
+                  src={
+                    featuredEvent.gallery?.[currentImg]?.url ??
+                    featuredEvent.coverImage
+                  }
+                  alt={
+                    featuredEvent.gallery?.[currentImg]?.alt ??
+                    `${featuredEvent.title} image ${currentImg + 1}`
+                  }
                   className="max-w-full max-h-full object-contain cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
@@ -949,8 +965,14 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({ featuredEvent }
 
             <div className="max-w-[90%] max-h-[85%] bg-black rounded-md overflow-hidden flex items-center justify-center">
               <img
-                src={featuredEvent.gallery?.[currentImg]?.url ?? featuredEvent.coverImage}
-                alt={featuredEvent.gallery?.[currentImg]?.alt ?? featuredEvent.title}
+                src={
+                  featuredEvent.gallery?.[currentImg]?.url ??
+                  featuredEvent.coverImage
+                }
+                alt={
+                  featuredEvent.gallery?.[currentImg]?.alt ??
+                  featuredEvent.title
+                }
                 className="max-w-full max-h-full object-contain"
               />
             </div>
@@ -993,7 +1015,6 @@ export default function EventsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Featured Event */}
         {featuredEvent && <FeaturedEventFlip featuredEvent={featuredEvent} />}
-
 
         {/* Upcoming Events */}
         {/* {upcomingEvents.filter(e => !e.featured).length > 0 && (

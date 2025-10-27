@@ -92,7 +92,9 @@ export default function MagazineSection({
   };
 
   return (
-    <section className={`w-full py-16 px-4 text-white ${className} tracking-[2.5px]`}>
+    <section
+      className={`w-full py-16 px-4 text-white ${className} tracking-[2.5px]`}
+    >
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-white">
@@ -109,8 +111,7 @@ export default function MagazineSection({
           {magazines.map((magazine, index) => (
             <div
               key={magazine.id}
-              className="flex flex-col items-center group cursor-pointer"
-              onClick={() => handleMagazineClick(magazine)}
+              className="flex flex-col items-center group"
             >
               {/* Magazine Container with Floating Effect */}
               <div
@@ -144,7 +145,10 @@ export default function MagazineSection({
                   </p>
                   <p className="text-sm text-gray-400">{magazine.date}</p>
                   <div className="pt-2">
-                    <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-full text-white font-semibold transition-all transform group-hover:scale-110">
+                    <button
+                      className="px-6 py-2 border-2 border-slate-400 text-white font-semibold transition-all transform group-hover:scale-110 rounded-full"
+                      onClick={() => handleMagazineClick(magazine)}
+                    >
                       Read Now
                     </button>
                   </div>

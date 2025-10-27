@@ -78,7 +78,7 @@
 //       >
 //         <div
 //           className="
-//             absolute inset-0 
+//             absolute inset-0
 //             bg-gradient-to-b from-white/20 to-transparent
 //             blur-3xl
 //             opacity-60
@@ -89,7 +89,7 @@
 //         {/* Soft halo around glass */}
 //         <div
 //           className="
-//             absolute inset-0 
+//             absolute inset-0
 //             shadow-[0_0_100px_40px_rgba(255,255,255,0.08)]
 //             pointer-events-none
 //             -z-10
@@ -136,7 +136,7 @@
 //                     )}
 
 //                     {/* Blog special animation */}
-                  
+
 //                   </li>
 //                 );
 //               })}
@@ -150,20 +150,13 @@
 
 // export default Navbar;
 
-
 "use client";
 
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import {
-  Camera,
-  Users,
-  CalendarDays,
-  Home,
-  Menu,
-  X,
-} from "lucide-react";
+import { Camera, Users, CalendarDays, Home, Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -209,17 +202,20 @@ const Navbar = () => {
         {/* Actual navbar content */}
         <div className="max-w-7xl mx-auto flex justify-between items-center py-2 px-6 h-14 text-white relative z-10">
           {/* Logo */}
-          <div className="flex items-center gap-3 text-xl font-light tracking-[0.25em]">
-            <Image
-              src="/logo/nova_logo.png"
-              alt="NOVA_LOGO"
-              width={50}
-              height={50}
-              className="drop-shadow-lg"
-            />
-            <span className="text-white/90 text-base md:text-lg">
-              DJS NOVA
-            </span>
+          <div >
+            <Link href="/" className="flex items-center gap-3 text-xl font-light tracking-[0.25em]">
+              {" "}
+              <Image
+                src="/logo/nova_logo.png"
+                alt="NOVA_LOGO"
+                width={50}
+                height={50}
+                className="drop-shadow-lg"
+              />
+              <span className="text-white/90 text-base md:text-lg">
+                DJS NOVA
+              </span>
+            </Link>
           </div>
 
           {/* 🧭 Desktop Navigation */}

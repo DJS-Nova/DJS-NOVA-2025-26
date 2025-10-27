@@ -36,7 +36,7 @@ const Footer: FC = () => {
       <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10 z-10">
         {/* --- Left Section --- */}
         <div className="space-y-4">
-          <div className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3">
             <Image
               src="/logo/nova_logo.png"
               alt="DJS NOVA Logo"
@@ -47,7 +47,7 @@ const Footer: FC = () => {
             <h2 className="text-2xl font-semibold text-white tracking-wide">
               DJS NOVA
             </h2>
-          </div>
+          </Link>
 
           <p className="text-sm text-gray-400 leading-relaxed">
             The official astronomy and astrophysics club of the college.
@@ -77,10 +77,10 @@ const Footer: FC = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Discover</h3>
           <ul className="space-y-2">
-            {["Team", "Event", "Gallery", "Blog"].map((item) => (
+            {["Home", "Team", "Event", "Gallery"].map((item) => (
               <li key={item}>
                 <Link
-                  href={`/${item.toLowerCase()}`}
+                  href={`/${item === "Home" ? "/" : item.toLowerCase()}`}
                   className="hover:text-white transition-colors"
                 >
                   {item}
@@ -92,28 +92,38 @@ const Footer: FC = () => {
 
         {/* --- Right Section --- */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">Get in touch</h3>
+          <h3 className="text-lg font-semibold text-white mb-4">
+            Get in touch
+          </h3>
           <ul className="space-y-3 text-sm">
-            <li className="flex items-start gap-3">
-              <MapPin className="w-4 h-4 text-gray-400 mt-[2px]" />
-              <span>
-                Dwarkadas J. Sanghvi College of Engineering,
-                <br />
-                Vile Parle West, Mumbai – 400056
-              </span>
+            <li>
+              <Link
+                href="https://maps.app.goo.gl/5BUqG5SWrFFdD3H97"
+                target="_blank"
+                className="flex items-start gap-3"
+              >
+                <MapPin className="w-4 h-4 text-gray-400 mt-[2px]" />
+                <span>
+                  Dwarkadas J. Sanghvi College of Engineering,
+                  <br />
+                  Vile Parle West, Mumbai – 400056
+                </span>
+              </Link>
             </li>
-            <li className="flex items-center gap-3">
-              <Mail className="w-4 h-4 text-gray-400" />
+            <li>
               <Link
                 href="mailto:djsnova09@gmail.com"
-                className="hover:text-white"
+                className="flex items-start gap-3"
               >
+                <Mail className="w-4 h-4 text-gray-400" />
                 djsnova09@gmail.com
               </Link>
             </li>
-            <li className="flex items-center gap-3">
-              <Phone className="w-4 h-4 text-gray-400" />
-              <span>Revati Singh: +91 82916 53370</span>
+            <li>
+              <Link href="tel:+919222056520" className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-gray-400" />
+                <span>Megh Dave: +91 92220 56520</span>
+              </Link>
             </li>
           </ul>
         </div>

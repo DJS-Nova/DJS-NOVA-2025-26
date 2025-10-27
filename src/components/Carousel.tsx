@@ -17,19 +17,18 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ items }) => {
   const [current, setCurrent] = useState(0);
   const [expanded, setExpanded] = useState<MediaItem | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement|null)[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
-  videoRefs.current.forEach((video, idx) => {
-    if (!video) return;
-    if (idx === current) {
-      video.play().catch(() => {}); // play center
-    } else {
-      video.pause();                // pause others
-    }
-  });
-}, [current]);
-
+    videoRefs.current.forEach((video, idx) => {
+      if (!video) return;
+      if (idx === current) {
+        video.play().catch(() => {}); // play center
+      } else {
+        video.pause(); // pause others
+      }
+    });
+  }, [current]);
 
   const prev = () =>
     setCurrent((prev) => (prev - 1 + items.length) % items.length);
@@ -37,8 +36,8 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center py-12">
-       <h2 className=" text-3xl md:text-5xl font-semibold mb-12 tracking-[0.2rem]">
-        Past Glimps
+      <h2 className=" text-3xl md:text-5xl font-semibold mb-12 tracking-[0.2rem] text-center">
+        NOVA ASTRO PHOTOGRAPHY
       </h2>
       {/* Carousel Container */}
       <div className="relative w-full max-w-4xl md:max-w-6xl h-68 md:h-[600px] flex items-center justify-center overflow-hidden">
@@ -80,7 +79,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
               ) : (
                 <video
                   ref={(el) => {
-                    videoRefs.current[index] = el; 
+                    videoRefs.current[index] = el;
                   }}
                   src={item.src}
                   className="w-64 h-40 md:w-[600px] md:h-[450px] object-cover rounded-xl shadow-lg"
