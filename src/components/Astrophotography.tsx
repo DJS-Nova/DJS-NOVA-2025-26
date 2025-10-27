@@ -38,7 +38,7 @@ export default function AstroPhotographyGallery() {
       {/* 🎥 Header with Video */}
       <section className="relative h-[80vh] w-full flex items-center justify-center text-center">
         <video
-          src="/astrophotography/Astrophotography.mp4"
+          src="/videos/Astrophotography.mp4"
           autoPlay
           muted
           loop
