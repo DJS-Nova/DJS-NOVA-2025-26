@@ -37,7 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({ items }) => {
   return (
     <div className="w-full flex flex-col items-center justify-center py-12">
       <h2 className=" text-3xl md:text-5xl font-semibold mb-12 tracking-[0.2rem] text-center">
-        NOVA ASTRO PHOTOGRAPHY
+        NOVAs GALLRY
       </h2>
       {/* Carousel Container */}
       <div className="relative w-full max-w-4xl md:max-w-6xl h-68 md:h-[600px] flex items-center justify-center overflow-hidden">

@@ -1,0 +1,129 @@
+[
+  {
+    "id": "1",
+    "title": "Moon Gazing 2025",
+    "description":
+      "Witness the magic of the night sky like never before! Join us for an enchanting evening of Moon Gazing filled with celestial activities.",
+    "date": "2025-11-04",
+    "time": "02:00 PM - 05:30 AM",
+    "location": "College Terrace, DJ Sanghvi College of Engineering, Mumbai",
+    "attendees": 300,
+    "status": "upcoming",
+    "featured": true,
+    "coverImage": "/event/moon.jpg",
+    "gallery": [
+      {
+        "url": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
+        "alt": "Moon Gazing Night Sky"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800",
+        "alt": "Telescope Setup"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800",
+        "alt": "Astronomy Activities"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+        "alt": "Moonlight Viewing"
+      }
+    ],
+    "details": {
+      "organizer": "DJS Nova Space Committee",
+      "category": "Astronomy & Night Observation",
+      "registrationLink": "#"
+    }
+  },
+
+  {
+    "id": "2",
+    "title": "Stargazing Night 2024",
+    "description":
+      "A memorable evening under the stars where participants observed celestial objects through telescopes and learned about constellations.",
+    "date": "2024-10-20",
+    "time": "7:00 PM - 11:00 PM",
+    "location": "College Terrace",
+    "attendees": 200,
+    "status": "past",
+    "coverImage":
+      "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1200&h=600&fit=crop",
+    "gallery": [
+      {
+        "url": "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800",
+        "alt": "Stargazing"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800",
+        "alt": "Night Sky"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?w=800",
+        "alt": "Telescope View"
+      }
+    ],
+    "details": {
+      "organizer": "DJS Nova Space Committee",
+      "category": "Observation Event"
+    }
+    
+  },
+  {
+    "id": "3",
+    "title": "Rocket Science Seminar",
+    "description":
+      "An engaging seminar on rocket propulsion systems and the physics behind space travel.",
+    "date": "2024-09-15",
+    "time": "3:00 PM - 6:00 PM",
+    "location": "Seminar Hall A",
+    "attendees": 180,
+    "status": "past",
+    "coverImage":
+      "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=1200&h=600&fit=crop",
+    "gallery": [
+      {
+        "url": "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=800",
+        "alt": "Rocket Launch"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1581822261290-991b38693d1b?w=800",
+        "alt": "Seminar Session"
+      }
+    ],
+    "details": {
+      "organizer": "DJS Nova Research Team",
+      "category": "Seminar"
+    }
+  },
+  {
+    "id": "4",
+    "title": "Space Photography Exhibition",
+    "description":
+      "A stunning collection of astrophotography captured by students and professionals.",
+    "date": "2024-08-10",
+    "time": "10:00 AM - 8:00 PM",
+    "location": "College Gallery",
+    "attendees": 300,
+    "status": "past",
+    "coverImage":
+      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200&h=600&fit=crop",
+    "gallery": [
+      {
+        "url": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800",
+        "alt": "Galaxy Photo"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800",
+        "alt": "Milky Way"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800",
+        "alt": "Nebula"
+      }
+    ],
+    "details": {
+      "organizer": "DJS Nova Creative Team",
+      "category": "Exhibition"
+    }
+  }
+]

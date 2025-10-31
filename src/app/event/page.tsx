@@ -9,6 +9,7 @@ import {
   ChevronRight,
   ExternalLink,
 } from "lucide-react";
+import Link from "next/link";
 
 // Types
 interface EventImage {
@@ -821,17 +822,33 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
                   {featuredEvent.description}
                 </p>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setFlipped(true);
-                  }}
-                  className="px-6 py-3 border-2 border-slate-500 text-white rounded-full transition-colors font-medium"
-                  aria-pressed={flipped}
-                  aria-label="View featured event details"
-                >
-                  View Details
-                </button>
+                <div className="flex justify-start items-center gap-2">
+                  {/* <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setFlipped(true);
+                    }}
+                    className="px-6 py-3 border-2 border-slate-500 text-white rounded-full transition-colors font-medium"
+                    aria-pressed={flipped}
+                    aria-label="View featured event details"
+                  >
+                    View Details
+                  </button> */}
+
+                  <button
+                    className="px-6 py-3 border-2 border-slate-500 text-white rounded-full transition-colors font-medium"
+                    aria-pressed={flipped}
+                    aria-label="View featured event details"
+                  >
+                    <Link
+                      href={"https://moongazing.vercel.app/"}
+                      target="blank"
+                    >
+                      {" "}
+                      vist website
+                    </Link>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -865,7 +882,7 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
               </button>
 
               {/* Image (contain with letterboxing) */}
-              <div className="w-full max-w-4xl max-h-[60vh] bg-black rounded-lg overflow-hidden flex items-center justify-center">
+              <div className="w-full max-w-4xl max-h-[50vh] rounded-lg overflow-hidden flex items-center justify-center ">
                 <img
                   src={
                     featuredEvent.gallery?.[currentImg]?.url ??
@@ -875,7 +892,7 @@ const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
                     featuredEvent.gallery?.[currentImg]?.alt ??
                     `${featuredEvent.title} image ${currentImg + 1}`
                   }
-                  className="max-w-full max-h-full object-contain cursor-pointer"
+                  className="max-w-full max-h-full object-contain cursor-pointer rounded-lg"
                   onClick={(e) => {
                     e.stopPropagation();
                     setZoomed(true);
@@ -982,9 +999,9 @@ export default function EventsPage() {
           <h1 className="text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text ">
             Events
           </h1>
-          <p className="text-slate-300 text-lg">
+          {/* <p className="text-slate-300 text-lg">
             Showing {eventsData.length} events
-          </p>
+          </p> */}
         </div>
       </div>
 

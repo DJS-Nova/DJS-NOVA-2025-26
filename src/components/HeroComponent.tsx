@@ -15,14 +15,15 @@ const HeroComponent = () => {
         <h1 className="text-4xl md:text-6xl font-bold tracking-widest">
           DJS NOVA
         </h1>
-        <div className="hidden md:block text-xl md:text-2xl leading-relaxed">
-          <span className="block">The official</span>
-          <span className="block">Astronomy</span>
-          <span className="block">and Astrophysics</span>
+        <div className="hidden md:block text-xl md:text-4xl uppercase  tracking-wider">
+          <span className="block">The official </span>
+          <span className="block">Astronomy and Astrophysics</span>
           <span className="block">club of DJSCE.</span>
         </div>
 
-        <p className=" md:hidden block text-gray-400 tracking-widest uppercase text-sm md:text-lg ">
+        <p className="hidden md:block text-gray-400 tracking-widest uppercase text-md ">We aim to spark fascination with the mysteries of the universe, bringing together students who share a passion for exploring the stars, space science, and cosmic discoveries</p>
+
+        <p className=" md:hidden block text-gray-400 tracking-widest uppercase text-sm">
           The official Astronomy and Astrophysics club of DJSCE.
         </p>
 

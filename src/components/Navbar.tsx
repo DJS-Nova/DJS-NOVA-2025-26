@@ -176,7 +176,7 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[9999] pointer-events-auto">
+    <header className="fixed top-0 left-0 w-full z-[999] pointer-events-auto">
   <div className="relative backdrop-blur-xl bg-white/10 text-white text-4xl font-light tracking-widest shadow-[0_0_40px_rgba(255,255,255,0.15)]">
     {/* Decorative glow */}
     <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent blur-3xl opacity-60 -z-10" />

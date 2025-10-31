@@ -14,7 +14,7 @@ const IntroOverlay = () => {
   if (!show) return null;
 
   return (
-    <div className="overlay pointer-events-none">
+    <div className={`overlay pointer-events-none z-1000`}>
       <div className="typewriter ">
         <h1>Chaos in calm....</h1>
       </div>

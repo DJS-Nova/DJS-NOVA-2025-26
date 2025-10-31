@@ -2367,11 +2367,12 @@ export default function TiltedSolarSystem() {
 
       renderer.dispose();
       if (
-        mountRef.current &&
-        renderer.domElement.parentNode === mountRef.current
-      ) {
-        mountRef.current.removeChild(renderer.domElement);
-      }
+  currentMount &&
+  renderer.domElement.parentNode === currentMount
+) {
+  currentMount.removeChild(renderer.domElement);
+}
+
     };
   }, []);
 
