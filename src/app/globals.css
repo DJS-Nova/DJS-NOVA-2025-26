@@ -70,7 +70,7 @@ a {
   min-height: 400px;
 }
 
-.overlay {
+/* .overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -92,16 +92,23 @@ a {
 .typewriter h1 {
   color: white;
   overflow: hidden;
-  border-right: 0.15em solid orange;
   white-space: nowrap;
   letter-spacing: 0.15em;
   font-size: 2rem;
   width: 0;
+  border-right: 0.15em solid transparent;
 }
 
-/* Only start animation when .start class is added */
+
 .typewriter.start h1 {
-  animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+  border-right-color: orange;
+  animation:
+    typing 2s steps(20, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+.typewriter.start h1.typed {
+  border-right-color: transparent !important;
 }
 
 @keyframes typing {
@@ -121,7 +128,8 @@ a {
   50% {
     border-color: orange;
   }
-}
+} */
+
 
 
 
