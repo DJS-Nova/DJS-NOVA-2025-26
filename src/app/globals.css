@@ -81,8 +81,12 @@ a {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  animation: fadeOut 0.5s ease forwards;
-  animation-delay: 3.5s; /* fade starts after typing */
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.overlay.fade-out {
+  opacity: 0;
 }
 
 .typewriter h1 {
@@ -92,7 +96,7 @@ a {
   white-space: nowrap;
   letter-spacing: 0.15em;
   font-size: 2rem;
-  animation: typing 2.5s steps(20, end), blink-caret 0.75s step-end infinite;
+  animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
@@ -114,12 +118,6 @@ a {
   }
 }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 
 @keyframes fadeInWhenVisible {
   from {

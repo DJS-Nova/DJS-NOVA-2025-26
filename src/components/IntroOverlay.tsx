@@ -1,21 +1,26 @@
-"use client"; // Required if using Next.js 13+ app directory
+"use client";
 
 import { useEffect, useState } from "react";
 
 const IntroOverlay = () => {
+  const [fade, setFade] = useState(false);
   const [show, setShow] = useState(true);
 
   useEffect(() => {
-    // Total time = typing duration + pause before fade
-    const timer = setTimeout(() => setShow(false), 2500); // 3.5s typing + extra pause
-    return () => clearTimeout(timer);
+    // Start fade-out after typing completes
+    const fadeTimer = setTimeout(() => setFade(true), 2200); // typing (2s) + small pause
+    const hideTimer = setTimeout(() => setShow(false), 2100); // fade lasts 0.5s
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(hideTimer);
+    };
   }, []);
 
   if (!show) return null;
 
   return (
-    <div className={`overlay pointer-events-none z-1000`}>
-      <div className="typewriter ">
+    <div className={`overlay ${fade ? "fade-out" : ""}`}>
+      <div className="typewriter">
         <h1>Chaos in calm....</h1>
       </div>
     </div>
