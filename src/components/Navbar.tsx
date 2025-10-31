@@ -176,117 +176,71 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
-      {/* 🔮 Parent glass + shadow container */}
-      <div
-        className="
-          relative backdrop-blur-xl bg-white/10
-          text-white text-4xl font-light tracking-widest
-          z-10 text-center shadow-[0_0_40px_rgba(255,255,255,0.15)]
-        "
-      >
-        {/* Decorative background glows */}
-        <div
-          className="
-            absolute inset-0 bg-gradient-to-b from-white/20 to-transparent
-            blur-3xl opacity-60 -z-10
-          "
-        ></div>
-        <div
-          className="
-            absolute inset-0 shadow-[0_0_100px_40px_rgba(255,255,255,0.08)]
-            pointer-events-none -z-10
-          "
-        ></div>
+    <header className="fixed top-0 left-0 w-full z-[9999] pointer-events-auto">
+  <div className="relative backdrop-blur-xl bg-white/10 text-white text-4xl font-light tracking-widest shadow-[0_0_40px_rgba(255,255,255,0.15)]">
+    {/* Decorative glow */}
+    <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent blur-3xl opacity-60 -z-10" />
+    <div className="absolute inset-0 shadow-[0_0_100px_40px_rgba(255,255,255,0.08)] pointer-events-none -z-10" />
 
-        {/* Actual navbar content */}
-        <div className="max-w-7xl mx-auto flex justify-between items-center py-2 px-6 h-14 text-white relative z-10">
-          {/* Logo */}
-          <div >
-            <Link href="/" className="flex items-center gap-3 text-xl font-light tracking-[0.25em]">
-              {" "}
-              <Image
-                src="/logo/nova_logo.png"
-                alt="NOVA_LOGO"
-                width={50}
-                height={50}
-                className="drop-shadow-lg"
-              />
-              <span className="text-white/90 text-base md:text-lg">
-                DJS NOVA
-              </span>
-            </Link>
-          </div>
+    {/* Navbar content */}
+    <div className="max-w-7xl mx-auto flex justify-between items-center py-2 px-6 h-14 text-white relative z-10">
+      {/* Logo */}
+      <Link href="/" className="flex items-center gap-3 text-xl font-light tracking-[0.25em]">
+        <Image src="/logo/nova_logo.png" alt="NOVA_LOGO" width={50} height={50} className="drop-shadow-lg" />
+        <span className="text-white/90 text-base md:text-lg">DJS NOVA</span>
+      </Link>
 
-          {/* 🧭 Desktop Navigation */}
-          <nav className="hidden md:block">
-            <ul className="flex gap-10 text-[15px] tracking-[0.2em]">
-              {routes.map(({ name, url }) => {
-                const isActive = pathname === url;
+      {/* Desktop menu */}
+      <nav className="hidden md:block">
+        <ul className="flex gap-10 text-[15px] tracking-[0.2em]">
+          {routes.map(({ name, url }) => {
+            const isActive = pathname === url;
+            return (
+              <li key={name} className="relative group">
+                <Link href={url} className={`flex items-center gap-2 transition-all duration-300 ${isActive ? "text-white" : "text-gray-400 hover:text-white"}`}>
+                  {name}
+                </Link>
+                {isActive && <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-amber-400 to-white rounded-full"></span>}
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
-                return (
-                  <li key={name} className="relative group">
-                    <a
-                      href={url}
-                      className={`flex items-center gap-2 transition-all duration-300 ${
-                        isActive
-                          ? "text-white"
-                          : "text-gray-400 hover:text-white"
-                      }`}
-                    >
-                      {name}
-                    </a>
-                    {isActive && (
-                      <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-amber-400 to-white rounded-full"></span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
+      {/* Hamburger */}
+      <button onClick={toggleMenu} className="md:hidden focus:outline-none z-20" aria-label="Toggle menu">
+        {menuOpen ? <X size={26} /> : <Menu size={26} />}
+      </button>
+    </div>
 
-          {/* 🍔 Hamburger Menu (Mobile) */}
-          <button
-            onClick={toggleMenu}
-            className="md:hidden focus:outline-none z-20"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
+    {/* Mobile menu */}
+    <div
+      className={`fixed top-14 left-0 w-full z-[9998] backdrop-blur-2xl bg-slate-900/90 border-t border-white/10 transition-all duration-500 ease-in-out overflow-hidden ${
+        menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+      }`}
+    >
+      <ul className="flex flex-col items-center gap-6 py-6 text-base text-white tracking-[0.2em]">
+        {routes.map(({ name, url }) => {
+          const isActive = pathname === url;
+          return (
+            <li key={name}>
+              <Link
+                href={url}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-center gap-2 transition-all duration-300 ${
+                  isActive ? "text-amber-400" : "text-gray-400 hover:text-white"
+                }`}
+              >
+                {name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</header>
 
-        {/* 📱 Mobile Menu Overlay */}
-        <div
-          className={`
-            fixed top-14 left-0 w-full 
-            backdrop-blur-2xl bg-slate-900/90 border-t border-white/10
-            transition-all duration-500 ease-in-out overflow-hidden
-            ${menuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
-          `}
-        >
-          <ul className="flex flex-col items-center gap-6 py-6 text-base text-white tracking-[0.2em]">
-            {routes.map(({ name, url }) => {
-              const isActive = pathname === url;
-              return (
-                <li key={name}>
-                  <a
-                    href={url}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center gap-2 transition-all duration-300 ${
-                      isActive
-                        ? "text-amber-400"
-                        : "text-gray-400 hover:text-white"
-                    }`}
-                  >
-                    <span>{name}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </header>
   );
 };
 

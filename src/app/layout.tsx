@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Gothic_A1, Poppins, Roboto, Bokor, } from "next/font/google";
+import { Gothic_A1, Poppins, Roboto, Bokor } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import IntroOverlay from "@/components/IntroOverlay";
 import Footer from "@/components/Footer";
-
-
+import FallingStars from "@/components/FallingStars";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import LayoutFix from "@/components/ScrollToTopOnNavigate";
 
 // const bokor = Bokor({
 //   weight: ["400"],
@@ -43,14 +44,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${gothicA1.className}  antialiased`}>
-        <div className="relative bg-[url('/bg/space_bg.gif')] bg-auto bg-repeat bg-left-top overflow-hidden ">
-        {/* <IntroOverlay /> */}
-        <Navbar />
-        <div className="mt-[56px]">
-          {children}
-        </div>
-      <Footer />
-        </div>
+        <body>
+          <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        </body>
       </body>
     </html>
   );

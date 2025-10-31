@@ -29,11 +29,8 @@ const socialLinks: SocialLink[] = [
 
 const Footer: FC = () => {
   return (
-    <footer className="relative  text-gray-300 py-4 px-4 md:px-20 overflow-hidden tracking-[2.5px]">
-      {/* Subtle star background */}
-      {/* <div className="absolute inset-0 bg-[url('/bg/stars.png')] bg-cover opacity-30 pointer-events-none"></div> */}
-
-      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10 z-10">
+    <footer className="relative text-gray-300 tracking-[2.5px] px-6 md:px-12 lg:px-20 py-12 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 items-start z-10">
         {/* --- Left Section --- */}
         <div className="space-y-4">
           <Link href="/" className="flex items-center space-x-3">
@@ -92,9 +89,7 @@ const Footer: FC = () => {
 
         {/* --- Right Section --- */}
         <div>
-          <h3 className="text-lg font-semibold text-white mb-4">
-            Get in touch
-          </h3>
+          <h3 className="text-lg font-semibold text-white mb-4">Get in touch</h3>
           <ul className="space-y-3 text-sm">
             <li>
               <Link
@@ -130,7 +125,7 @@ const Footer: FC = () => {
       </div>
 
       {/* --- Footer Bottom --- */}
-      <div className="relative z-10 mt-12 text-center text-sm text-gray-500  pt-2">
+      <div className="relative z-10 mt-12 text-center text-sm text-gray-500">
         <p>Copyright © 2025 DJS NOVA</p>
       </div>
     </footer>

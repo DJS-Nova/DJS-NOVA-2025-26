@@ -93,7 +93,7 @@ export default function MagazineSection({
 
   return (
     <section
-      className={`w-full py-16 px-4 text-white ${className} tracking-[2.5px]`}
+      className={`w-full py-16 px-4 text-white ${className} tracking-[0.1rem]`}
     >
       {/* Header */}
       <div className="text-center mb-8">
@@ -192,10 +192,10 @@ export default function MagazineSection({
       {isPdfOpen && selectedMagazine && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-6 animate-fadeIn">
           {/* Main container */}
-          <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/80 border border-gray-700/50 shadow-2xl rounded-2xl w-full max-w-6xl h-[90vh] flex flex-col overflow-hidden backdrop-blur-md">
+          <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/80 border border-gray-700/50 shadow-2xl rounded-2xl w-full max-w-6xl h-[80vh] mt-10 md:mt-0 md:h-[90vh] flex flex-col overflow-hidden backdrop-blur-md">
             {/* Header */}
             <div className="flex justify-between items-center px-6 py-2 border-b border-gray-700/60">
-              <h3 className="text-2xl font-semibold text-white tracking-wide">
+              <h3 className="text-xl md:text-2xl font-semibold text-white tracking-wide">
                 {selectedMagazine.title}
               </h3>
               <button

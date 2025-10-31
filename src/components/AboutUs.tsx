@@ -132,7 +132,7 @@ const AboutUs = () => {
       >
         <div
           className="
-            relative tracking-[0.25em] flex flex-col
+            relative tracking-[0.15em] flex flex-col
             items-center md:items-start space-y-2 mb-6
           "
         >
@@ -141,8 +141,8 @@ const AboutUs = () => {
           </p>
           <h2
             className="
-              text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug
-              w-full md:w-3/4
+              text-2xl sm:text-3xl md:text-4xl font-semibold 
+              w-full md:w-3/4 tracking-wider
             "
           >
             Exploring the Universe <br className="hidden sm:block" /> One Star at a Time

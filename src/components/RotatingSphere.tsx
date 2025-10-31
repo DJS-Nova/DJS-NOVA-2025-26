@@ -472,8 +472,23 @@ export default function RotatableSphere({
       }}
     >
       {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-          <div className="text-white text-xl">Loading...</div>
+        <div
+          className="absolute inset-0 z-30 flex items-center justify-center"
+          style={{ pointerEvents: "none", background: "rgba(0, 0, 0, 0.1)" }}
+        >
+          <div
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: "50%",
+              border: "3px solid rgba(255,255,255,0.2)",
+              borderTop: "3px solid rgba(255,255,255,0.9)",
+              animation: "spin 1s linear infinite",
+            }}
+          />
+          <style>
+            {`@keyframes spin { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }`}
+          </style>
         </div>
       )}
       <div

@@ -980,7 +980,7 @@ export default function EventsPage() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920')] bg-cover bg-center opacity-20" />
         <div className="relative z-10 text-center">
           <h1 className="text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text ">
-            All Events
+            Events
           </h1>
           <p className="text-slate-300 text-lg">
             Showing {eventsData.length} events

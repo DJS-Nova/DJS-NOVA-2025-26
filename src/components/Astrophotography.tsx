@@ -24,7 +24,6 @@ export default function AstroPhotographyGallery() {
     { id: 9, imgSrc: "/astrophotography/9.jpg", desc: "The Calm Lake" },
     { id: 10, imgSrc: "/astrophotography/10.jpg", desc: "The Sun Set" },
     { id: 11, imgSrc: "/astrophotography/11.jpg", desc: "The Milky Way" },
-    { id: 12, imgSrc: "/astrophotography/12.jpg", desc: "Star Trails" },
     { id: 13, imgSrc: "/astrophotography/13.jpg", desc: "The Aurora Borealis" },
     { id: 14, imgSrc: "/astrophotography/14.jpg", desc: "The Lunar Eclipse" },
   ];
@@ -52,10 +51,10 @@ export default function AstroPhotographyGallery() {
 
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 px-6">
-          <h1 className="text-[32px] md:text-5xl font-bold tracking-widest mb-4">
+          <h1 className="text-[22px] md:text-5xl font-bold tracking-widest mb-4">
             Our Astrophotography Showcase
           </h1>
-          <p className="max-w-2xl mx-auto text-gray-300 text-sm md:text-base leading-relaxed tracking-[0.25px]">
+          <p className="max-w-2xl mx-auto text-gray-300 text-[13px] md:text-base leading-relaxed tracking-[0.25px]">
             Explore the universe through our lenses — from mesmerizing lunar
             landscapes to breathtaking deep-sky captures, each image tells a
             story of wonder, patience, and discovery.

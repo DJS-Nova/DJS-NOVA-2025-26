@@ -49,7 +49,7 @@ const teamsData: TeamData[] = [
         name: "Jainam Dedhia",
         role: "Chairperson",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Chairperson",
-        social: { linkedin: "#" },
+        social: { linkedin: "#",github: "#",instagram: "#",email: "#" },
       },
       vcpAdmin: {
         name: "Bhargavi Naik",
@@ -60,7 +60,7 @@ const teamsData: TeamData[] = [
       vcpTech: {
         name: "Akshat Singh",
         role: "Vice Chairperson (Technical)",
-        image: "/akshatsingh.webp",
+        image: "/team/akshatsingh.webp",
         social: { linkedin: "#" },
       },
       secretary: {
@@ -321,15 +321,56 @@ const MemberCard = ({ member }: { member: Member }) => {
 
           {/* Social Links - Show on hover */}
           {member.social && (
-            <div className="flex gap-2 mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            // <div className="flex gap-2 mt-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+            //   {member.social.linkedin && (
+            //     <a
+            //       href={member.social.linkedin}
+            //       target="_blank"
+            //       rel="noopener noreferrer"
+            //       className="flex items-center justify-center w-6 h-6 rounded-md bg-[#0a66c2] hover:brightness-110 transition-all"
+            //     >
+            //       <Linkedin size={16} fill="white" color="transprent"/>
+            //     </a>
+            //   )}
+            //   {member.social.github && (
+            //     <a
+            //       href={member.social.github}
+            //       target="_blank"
+            //       rel="noopener noreferrer"
+            //       className="flex items-center justify-center w-6 h-6 rounded-full bg-[#171515] hover:brightness-110 transition-all"
+            //     >
+            //       <Github size={16} color="white" />
+            //     </a>
+            //   )}
+            //   {member.social.email && (
+            //     <a
+            //       href={`mailto:${member.social.email}`}
+            //       className="flex items-center justify-center w-6 h-6 rounded-full bg-[#34A853] hover:brightness-110 transition-all"
+            //     >
+            //       <Mail size={16} color="white" />
+            //     </a>
+            //   )}
+            //   {member.social.instagram && (
+            //     <a
+            //       href={member.social.instagram}
+            //       target="_blank"
+            //       rel="noopener noreferrer"
+            //       className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:brightness-110 transition-all"
+            //     >
+            //       <Instagram size={16} color="white" />
+            //     </a>
+            //   )}
+            // </div>
+
+            <div className="flex gap-2 mt-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               {member.social.linkedin && (
                 <a
                   href={member.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-blue-400 transition-colors text-xs flex items-center gap-1"
+                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-all"
                 >
-                  <Linkedin size={14} />
+                  <Linkedin size={16} fill="white" color="transprent"/>
                 </a>
               )}
               {member.social.github && (
@@ -337,17 +378,17 @@ const MemberCard = ({ member }: { member: Member }) => {
                   href={member.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-purple-400 transition-colors text-xs flex items-center gap-1"
+                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-all"
                 >
-                  <Github size={14} />
+                  <Github size={16} color="white" />
                 </a>
               )}
               {member.social.email && (
                 <a
                   href={`mailto:${member.social.email}`}
-                  className="text-slate-400 hover:text-green-400 transition-colors text-xs flex items-center gap-1"
+                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-all"
                 >
-                  <Mail size={14} />
+                  <Mail size={16} color="white" />
                 </a>
               )}
               {member.social.instagram && (
@@ -355,9 +396,9 @@ const MemberCard = ({ member }: { member: Member }) => {
                   href={member.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-400 hover:text-purple-400 transition-colors text-xs flex items-center gap-1"
+                  className="flex items-center justify-center w-6 h-6 rounded-full hover:brightness-110 transition-all"
                 >
-                  <Instagram size={14} className="text-purple-400/80" />
+                  <Instagram size={16} color="white" />
                 </a>
               )}
             </div>
@@ -379,14 +420,14 @@ export default function TeamShowcase() {
   };
 
   return (
-    <div className="min-h-screen  py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen  md:py-16 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className=" text-4xl md:text-5xl font-bold text-white mb-4 mt-4 tracking-[0.15em]">
+        <div className="text-center mb-8">
+          {/* <h1 className=" text-xl md:text-5xl font-bold text-white mb-4 mt-4 tracking-[0.15em]">
             DJS Nova Space Committee
-          </h1>
-          <p className="text-slate-400 text-lg tracking-[0.25em]">
+          </h1> */}
+          <p className="text-gray-400 tracking-widest uppercase text-xl md:text-2xl">
             Meet Our Stellar Team
           </p>
         </div>
@@ -421,14 +462,14 @@ export default function TeamShowcase() {
               <div
                 className={`overflow-hidden transition-all duration-500 ${
                   expandedTenure === index
-                    ? "max-h-[5000px] opacity-100"
+                    ? "max-h-auto opacity-100"
                     : "max-h-0 opacity-0"
                 }`}
               >
                 <div className="p-8 space-y-12">
                   {/* ===== BOARD ===== */}
                   <div>
-                    <h3 className="text-xl font-semibold text-blue-400 mb-8 text-center">
+                    <h3 className="text-xl font-semibold mb-8 text-center tracking-wider">
                       Board Members
                     </h3>
 
@@ -467,72 +508,72 @@ export default function TeamShowcase() {
                   </div>
 
                   {/* ===== DEPARTMENTS ===== */}
-                  <div className="space-y-10">
-                    <h3 className="text-xl font-semibold text-purple-400 text-center">
-                      Department Heads
-                    </h3>
+                  <div className="space-y-12">
+  {/* ===== DEPARTMENTS ===== */}
+  <h3 className="text-xl font-semibold tracking-wider text-center mb-8">
+    Department Heads
+  </h3>
 
-                    {/* Research */}
-                    <div>
-                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center">
-                        Research
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                        {team.departments.research.map((member, i) => (
-                          <MemberCard key={i} member={member} />
-                        ))}
-                      </div>
-                    </div>
+  {/* Research */}
+  <div className="flex flex-col items-center">
+    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+      Research
+    </h4>
+    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+      {team.departments.research.map((member, i) => (
+        <MemberCard key={i} member={member} />
+      ))}
+    </div>
+  </div>
 
-                    {/* Technical */}
-                    <div>
-                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center">
-                        Technical
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                        <MemberCard member={team.departments.tech.ai} />
-                        <MemberCard member={team.departments.tech.webdev} />
-                      </div>
-                    </div>
+  {/* Technical */}
+  <div className="flex flex-col items-center">
+    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+      Technical
+    </h4>
+    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+      <MemberCard member={team.departments.tech.ai} />
+      <MemberCard member={team.departments.tech.webdev} />
+    </div>
+  </div>
 
-                    {/* Outreach */}
-                    <div>
-                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center">
-                        Outreach
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                        {team.departments.outreach.map((member, i) => (
-                          <MemberCard key={i} member={member} />
-                        ))}
-                      </div>
-                    </div>
+  {/* Outreach */}
+  <div className="flex flex-col items-center">
+    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+      Outreach
+    </h4>
+    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+      {team.departments.outreach.map((member, i) => (
+        <MemberCard key={i} member={member} />
+      ))}
+    </div>
+  </div>
 
-                    {/* Creative & Editorial */}
-                    <div>
-                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center">
-                        Creative & Editorial
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                        {team.departments.creativesEditorial.map(
-                          (member, i) => (
-                            <MemberCard key={i} member={member} />
-                          )
-                        )}
-                      </div>
-                    </div>
+  {/* Creative & Editorial */}
+  <div className="flex flex-col items-center">
+    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+      Creative & Editorial
+    </h4>
+    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+      {team.departments.creativesEditorial.map((member, i) => (
+        <MemberCard key={i} member={member} />
+      ))}
+    </div>
+  </div>
 
-                    {/* Management */}
-                    <div>
-                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center">
-                        Management
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                        {team.departments.management.map((member, i) => (
-                          <MemberCard key={i} member={member} />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+  {/* Management */}
+  <div className="flex flex-col items-center">
+    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+      Management
+    </h4>
+    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+      {team.departments.management.map((member, i) => (
+        <MemberCard key={i} member={member} />
+      ))}
+    </div>
+  </div>
+</div>
+
                 </div>
               </div>
             </div>
