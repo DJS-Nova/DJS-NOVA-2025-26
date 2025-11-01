@@ -37,6 +37,7 @@ interface TeamData {
     outreach: Member[];
     creativesEditorial: Member[];
     management: Member[];
+    astrophotography: Member[];
   };
 }
 
@@ -157,6 +158,14 @@ const teamsData: TeamData[] = [
           image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Management2",
           social: { linkedin: "#" },
         },
+      ],
+      astrophotography: [
+        {
+          name: "Rugved Mane",
+          role: "Astrophotography Head",
+          image: "https://api.dicebear.com/7.x/avataaars/svg?seed=astrophotography1",
+          social: { linkedin: "#" },
+        }
       ],
     },
   },
@@ -568,6 +577,16 @@ export default function TeamShowcase() {
     </h4>
     <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
       {team.departments.management.map((member, i) => (
+        <MemberCard key={i} member={member} />
+      ))}
+    </div>
+  </div>
+   <div className="flex flex-col items-center">
+    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+      Astrophotography Head 
+    </h4>
+    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+      {team.departments.astrophotography.map((member, i) => (
         <MemberCard key={i} member={member} />
       ))}
     </div>
