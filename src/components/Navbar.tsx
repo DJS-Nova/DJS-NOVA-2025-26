@@ -169,7 +169,7 @@ const Navbar = () => {
       url: "/astrophotography",
       icon: <Camera size={18} />,
     },
-    { name: "Team", url: "/team", icon: <Users size={18} /> },
+    // { name: "Team", url: "/team", icon: <Users size={18} /> },
     { name: "Event", url: "/event", icon: <CalendarDays size={18} /> },
   ];
 

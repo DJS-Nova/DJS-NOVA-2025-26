@@ -363,6 +363,8 @@ export default function RotatableSphere({
       const handleMouseUp = () => (isDragging = false);
 
       const canvas = renderer.domElement;
+      // canvas.height= height
+      //   canvas.width= width
       canvas.addEventListener("mousedown", handleMouseDown);
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);

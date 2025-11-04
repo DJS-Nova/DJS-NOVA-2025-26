@@ -17,7 +17,7 @@ export default function Home() {
       <HeroComponent />
       <AboutUs />
       <OurMisson />
-      <Carousel items={media} />
+      {/* <Carousel items={media} /> */}
       <MagazineSection />
     </>
   );

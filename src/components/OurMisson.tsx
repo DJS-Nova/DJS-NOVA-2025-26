@@ -46,8 +46,8 @@ const OurMission = () => {
           textureUrl="https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_atmos_2048.jpg"
           bumpMapUrl="https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_normal_2048.jpg"
           specularMapUrl="https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_specular_2048.jpg"
-          width={250}
-          height={250}
+          width={350}
+          height={350}
         />
 
         {/* Fallback placeholder for mobile if sphere disabled */}

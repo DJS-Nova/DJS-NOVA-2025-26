@@ -19,13 +19,13 @@ export default function AstroPhotographyGallery() {
     {
       id: 8,
       imgSrc: "/astrophotography/8.jpg",
-      desc: "The Majestic Mountains",
+      desc: "Orion Nebula",
     },
-    { id: 9, imgSrc: "/astrophotography/9.jpg", desc: "The Calm Lake" },
-    { id: 10, imgSrc: "/astrophotography/10.jpg", desc: "The Sun Set" },
-    { id: 11, imgSrc: "/astrophotography/11.jpg", desc: "The Milky Way" },
-    { id: 13, imgSrc: "/astrophotography/13.jpg", desc: "The Aurora Borealis" },
-    { id: 14, imgSrc: "/astrophotography/14.jpg", desc: "The Lunar Eclipse" },
+    { id: 9, imgSrc: "/astrophotography/9.jpg", desc: "Moon" },
+    { id: 10, imgSrc: "/astrophotography/10.jpg", desc: "Sun Set" },
+    { id: 11, imgSrc: "/astrophotography/11.jpg", desc: "Orion Nebula" },
+    { id: 13, imgSrc: "/astrophotography/13.jpg", desc: "Pleiades" },
+    { id: 14, imgSrc: "/astrophotography/14.jpg", desc: "Jupiter and it's Moon" },
   ];
 
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
