@@ -74,7 +74,7 @@ const Footer: FC = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Discover</h3>
           <ul className="space-y-2">
-            {["Home", "Team", "Event", "Gallery"].map((item) => (
+            {["Home", "Team", "Event"].map((item) => (
               <li key={item}>
                 <Link
                   href={`/${item === "Home" ? "/" : item.toLowerCase()}`}
@@ -126,7 +126,7 @@ const Footer: FC = () => {
 
       {/* --- Footer Bottom --- */}
       <div className="relative z-10 mt-12 text-center text-sm text-gray-500">
-        <p>Copyright © 2025 DJS NOVA</p>
+        <p>Copyright © 2026 DJS NOVA</p>
       </div>
     </footer>
   );

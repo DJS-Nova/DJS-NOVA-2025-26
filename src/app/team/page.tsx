@@ -50,7 +50,7 @@ const teamsData: TeamData[] = [
         name: "Jainam Dedhia",
         role: "Chairperson",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Chairperson",
-        social: { linkedin: "#",github: "#",instagram: "#",email: "#" },
+        social: { linkedin: "#", github: "#", instagram: "#", email: "#" },
       },
       vcpAdmin: {
         name: "Bhargavi Naik",
@@ -379,7 +379,7 @@ const MemberCard = ({ member }: { member: Member }) => {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-all"
                 >
-                  <Linkedin size={16} fill="white" color="transprent"/>
+                  <Linkedin size={16} fill="white" color="transprent" />
                 </a>
               )}
               {member.social.github && (
@@ -460,20 +460,18 @@ export default function TeamShowcase() {
                     </h2>
                   </div>
                   <ChevronDown
-                    className={`text-slate-400 transition-transform duration-300 ${
-                      expandedTenure === index ? "rotate-180" : ""
-                    }`}
+                    className={`text-slate-400 transition-transform duration-300 ${expandedTenure === index ? "rotate-180" : ""
+                      }`}
                     size={24}
                   />
                 </button>
               )}
               {/* Team Content */}
               <div
-                className={`overflow-hidden transition-all duration-500 ${
-                  expandedTenure === index
+                className={`overflow-hidden transition-all duration-500 ${expandedTenure === index
                     ? "max-h-auto opacity-100"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <div className="p-8 space-y-12">
                   {/* ===== BOARD ===== */}
@@ -518,80 +516,80 @@ export default function TeamShowcase() {
 
                   {/* ===== DEPARTMENTS ===== */}
                   <div className="space-y-12">
-  {/* ===== DEPARTMENTS ===== */}
-  <h3 className="text-xl font-semibold tracking-wider text-center mb-8">
-    Department Heads
-  </h3>
+                    {/* ===== DEPARTMENTS ===== */}
+                    <h3 className="text-xl font-semibold tracking-wider text-center mb-8">
+                      Department Heads
+                    </h3>
 
-  {/* Research */}
-  <div className="flex flex-col items-center">
-    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
-      Research
-    </h4>
-    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
-      {team.departments.research.map((member, i) => (
-        <MemberCard key={i} member={member} />
-      ))}
-    </div>
-  </div>
+                    {/* Research */}
+                    <div className="flex flex-col items-center">
+                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+                        Research
+                      </h4>
+                      <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+                        {team.departments.research.map((member, i) => (
+                          <MemberCard key={i} member={member} />
+                        ))}
+                      </div>
+                    </div>
 
-  {/* Technical */}
-  <div className="flex flex-col items-center">
-    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
-      Technical
-    </h4>
-    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
-      <MemberCard member={team.departments.tech.ai} />
-      <MemberCard member={team.departments.tech.webdev} />
-    </div>
-  </div>
+                    {/* Technical */}
+                    <div className="flex flex-col items-center">
+                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+                        Technical
+                      </h4>
+                      <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+                        <MemberCard member={team.departments.tech.ai} />
+                        <MemberCard member={team.departments.tech.webdev} />
+                      </div>
+                    </div>
 
-  {/* Outreach */}
-  <div className="flex flex-col items-center">
-    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
-      Outreach
-    </h4>
-    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
-      {team.departments.outreach.map((member, i) => (
-        <MemberCard key={i} member={member} />
-      ))}
-    </div>
-  </div>
+                    {/* Outreach */}
+                    <div className="flex flex-col items-center">
+                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+                        Outreach
+                      </h4>
+                      <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+                        {team.departments.outreach.map((member, i) => (
+                          <MemberCard key={i} member={member} />
+                        ))}
+                      </div>
+                    </div>
 
-  {/* Creative & Editorial */}
-  <div className="flex flex-col items-center">
-    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
-      Creative & Editorial
-    </h4>
-    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
-      {team.departments.creativesEditorial.map((member, i) => (
-        <MemberCard key={i} member={member} />
-      ))}
-    </div>
-  </div>
+                    {/* Creative & Editorial */}
+                    <div className="flex flex-col items-center">
+                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+                        Creative & Editorial
+                      </h4>
+                      <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+                        {team.departments.creativesEditorial.map((member, i) => (
+                          <MemberCard key={i} member={member} />
+                        ))}
+                      </div>
+                    </div>
 
-  {/* Management */}
-  <div className="flex flex-col items-center">
-    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
-      Management
-    </h4>
-    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
-      {team.departments.management.map((member, i) => (
-        <MemberCard key={i} member={member} />
-      ))}
-    </div>
-  </div>
-   <div className="flex flex-col items-center">
-    <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
-      Astrophotography Head 
-    </h4>
-    <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
-      {team.departments.astrophotography.map((member, i) => (
-        <MemberCard key={i} member={member} />
-      ))}
-    </div>
-  </div>
-</div>
+                    {/* Management */}
+                    <div className="flex flex-col items-center">
+                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+                        Management
+                      </h4>
+                      <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+                        {team.departments.management.map((member, i) => (
+                          <MemberCard key={i} member={member} />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center">
+                      <h4 className="text-lg font-medium text-slate-300 mb-4 text-center w-full flex justify-center">
+                        Astrophotography Head
+                      </h4>
+                      <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
+                        {team.departments.astrophotography.map((member, i) => (
+                          <MemberCard key={i} member={member} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
               </div>

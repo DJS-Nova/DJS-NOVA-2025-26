@@ -5,13 +5,15 @@ import {
   Calendar,
   MapPin,
   X,
+  ArrowRight,
+  ExternalLink,
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
+  Maximize2
 } from "lucide-react";
 import Link from "next/link";
 
-// Types
+// --- Types ---
 interface EventImage {
   url: string;
   alt: string;
@@ -24,1030 +26,339 @@ interface Event {
   date: string;
   time: string;
   location: string;
-  attendees?: number;
   status: "upcoming" | "past";
   featured?: boolean;
   coverImage: string;
   gallery: EventImage[];
-  details: {
-    organizer?: string;
-    category?: string;
-    registrationLink?: string;
-  };
-  testimonials?: {
-    name: string;
-    role: string;
-    comment: string;
-    avatar?: string;
-  }[];
+  details: { organizer?: string; category?: string; registrationLink?: string; };
+  externalLink?: string;
 }
 
-// Sample Events Data
-const eventsData: Event[] = [
-  {
-    id: "1",
-    title: "Moon Gazing 2025",
-    description:
-      "Witness the magic of the night sky like never before! Join us for an enchanting evening of Moon Gazing filled with celestial activities.",
-    date: "2025-11-04",
-    time: "02:00 PM - 05:30 AM",
-    location: "College Terrace, DJ Sanghvi College of Engineering, Mumbai",
-    attendees: 300,
-    status: "upcoming",
-    featured: true,
-    coverImage: "/event/moon.jpg",
-    gallery: [
-      {
-        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800",
-        alt: "Moon Gazing Night Sky",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=800",
-        alt: "Telescope Setup",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800",
-        alt: "Astronomy Activities",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
-        alt: "Moonlight Viewing",
-      },
-    ],
-    details: {
-      organizer: "DJS Nova Space Committee",
-      category: "Astronomy & Night Observation",
-      registrationLink: "#",
-    },
-    testimonials: [
-      {
-        name: "Dr. Meera Patel",
-        role: "Astronomer & Guest Speaker",
-        comment:
-          "An awe-inspiring event that truly connected everyone with the wonders of our night sky. The Moon Gazing session was breathtaking!",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Meera",
-      },
-    ],
-  },
-
-  {
-    id: "2",
-    title: "Stargazing Night 2024",
-    description:
-      "A memorable evening under the stars where participants observed celestial objects through telescopes and learned about constellations.",
-    date: "2024-10-20",
-    time: "7:00 PM - 11:00 PM",
-    location: "College Terrace",
-    attendees: 200,
-    status: "past",
-    coverImage:
-      "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1200&h=600&fit=crop",
-    gallery: [
-      {
-        url: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800",
-        alt: "Stargazing",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1464802686167-b939a6910659?w=800",
-        alt: "Night Sky",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?w=800",
-        alt: "Telescope View",
-      },
-    ],
-    details: {
-      organizer: "DJS Nova Space Committee",
-      category: "Observation Event",
-    },
-    testimonials: [
-      {
-        name: "Priya Sharma",
-        role: "Second Year Student",
-        comment:
-          "An unforgettable experience! Seeing Jupiter and its moons through the telescope was absolutely breathtaking.",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
-      },
-      {
-        name: "Arjun Mehta",
-        role: "Third Year Student",
-        comment:
-          "The organizers did an excellent job explaining the constellations. Looking forward to more events like this!",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun",
-      },
-    ],
-  },
-  {
-    id: "3",
-    title: "Rocket Science Seminar",
-    description:
-      "An engaging seminar on rocket propulsion systems and the physics behind space travel.",
-    date: "2024-09-15",
-    time: "3:00 PM - 6:00 PM",
-    location: "Seminar Hall A",
-    attendees: 180,
-    status: "past",
-    coverImage:
-      "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=1200&h=600&fit=crop",
-    gallery: [
-      {
-        url: "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=800",
-        alt: "Rocket Launch",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581822261290-991b38693d1b?w=800",
-        alt: "Seminar Session",
-      },
-    ],
-    details: {
-      organizer: "DJS Nova Research Team",
-      category: "Seminar",
-    },
-  },
-  {
-    id: "4",
-    title: "Space Photography Exhibition",
-    description:
-      "A stunning collection of astrophotography captured by students and professionals.",
-    date: "2024-08-10",
-    time: "10:00 AM - 8:00 PM",
-    location: "College Gallery",
-    attendees: 300,
-    status: "past",
-    coverImage:
-      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200&h=600&fit=crop",
-    gallery: [
-      {
-        url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800",
-        alt: "Galaxy Photo",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800",
-        alt: "Milky Way",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800",
-        alt: "Nebula",
-      },
-    ],
-    details: {
-      organizer: "DJS Nova Creative Team",
-      category: "Exhibition",
-    },
-  },
-];
-
-const GalleryModal = ({
+// --- Full Screen Lightbox ---
+const Lightbox = ({
   images,
+  currentIndex,
   isOpen,
   onClose,
-  initialIndex = 0,
+  onNavigate
 }: {
   images: EventImage[];
+  currentIndex: number;
   isOpen: boolean;
   onClose: () => void;
-  initialIndex?: number;
+  onNavigate: (index: number) => void;
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
-
   if (!isOpen) return null;
 
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onNavigate((currentIndex + 1) % images.length);
   };
 
-  const prevImage = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onNavigate((currentIndex - 1 + images.length) % images.length);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4">
-      <button
-        onClick={onClose}
-        className="absolute top-4 right-4 text-white hover:text-red-400 transition-colors z-10"
-      >
-        <X size={32} />
+    // Performance Fix: Removed backdrop-blur-3xl, replaced with solid 95% black to stop mobile lag
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 animate-in fade-in duration-200" onClick={onClose}>
+      <button onClick={onClose} className="absolute top-16 right-4 md:top-8 md:right-8 text-white/50 hover:text-amber-400 bg-white/5 hover:bg-white/10 p-3 rounded-full transition-all z-20 border border-white/10">
+        <X size={24} />
       </button>
 
-      <button
-        onClick={prevImage}
-        className="absolute left-4 text-white hover:text-blue-400 transition-colors z-10"
-      >
-        <ChevronLeft size={48} />
-      </button>
+      {images.length > 1 && (
+        <>
+          <button onClick={handlePrev} className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-amber-400 bg-black/50 hover:bg-black/80 p-3 md:p-4 rounded-full transition-all hover:scale-110 z-20 border border-white/10">
+            <ChevronLeft size={24} className="md:w-7 md:h-7" />
+          </button>
+          <button onClick={handleNext} className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-amber-400 bg-black/50 hover:bg-black/80 p-3 md:p-4 rounded-full transition-all hover:scale-110 z-20 border border-white/10">
+            <ChevronRight size={24} className="md:w-7 md:h-7" />
+          </button>
+        </>
+      )}
 
-      <button
-        onClick={nextImage}
-        className="absolute right-4 text-white hover:text-blue-400 transition-colors z-10"
-      >
-        <ChevronRight size={48} />
-      </button>
+      <div className="relative max-w-7xl h-full w-full px-4 md:px-24 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+        <img
+          src={images[currentIndex].url}
+          alt={images[currentIndex].alt}
+          className="max-w-full max-h-[85dvh] object-contain rounded-lg"
+          loading="lazy"
+        />
+      </div>
 
-      <div className="flex  flex-col items-center justify-center">
-        <div className="max-w-6xl max-h-[90vh] w-full mx-4 flex items-center justify-center bg-black rounded-lg overflow-hidden">
-          <img
-            src={images[currentIndex].url}
-            alt={images[currentIndex].alt}
-            className="max-w-full max-h-[90vh] object-contain"
-          />
-        </div>
-
-        <p className="text-white text-center mt-4 text-lg">
-          {currentIndex + 1} / {images.length}
-        </p>
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 px-6 py-2 bg-black/80 rounded-full text-amber-300/80 text-xs md:text-sm tracking-[0.2em] border border-white/10 font-medium z-20">
+        {currentIndex + 1} / {images.length}
       </div>
     </div>
   );
 };
 
-// const EventCard = ({
-//   event,
-//   onClick
-// }: {
-//   event: Event;
-//   onClick: () => void;
-// }) => {
-//   return (
-//     <div
-//       onClick={onClick}
-//       className="group bg-slate-900/50 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-blue-500/20"
-//     >
-//       <div className="relative h-48 overflow-hidden">
-//         <img
-//           src={event.coverImage}
-//           alt={event.title}
-//           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-//         />
-//         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
-//         <div className="absolute top-4 left-4">
-//           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-//             event.status === 'upcoming'
-//               ? 'bg-green-500/20 text-green-400 border border-green-500/50'
-//               : 'bg-slate-700/50 text-slate-300 border border-slate-600/50'
-//           }`}>
-//             {event.status === 'upcoming' ? 'Coming Soon' : 'Past Event'}
-//           </span>
-//         </div>
-//       </div>
+// --- Split-Screen Event Gallery Modal ---
+const EventGalleryModal = ({ event, onClose }: { event: Event | null; onClose: () => void }) => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-//       <div className="p-6">
-//         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-400/75 transition-colors">
-//           {event.title}
-//         </h3>
-
-//         <div className="space-y-2 mb-4">
-//           <div className="flex items-center gap-2 text-slate-400 text-sm">
-//             <Calendar size={16} className="text-blue-400" />
-//             <span>{new Date(event.date).toLocaleDateString('en-US', {
-//               year: 'numeric',
-//               month: 'long',
-//               day: 'numeric'
-//             })}</span>
-//           </div>
-//           {/* <div className="flex items-center gap-2 text-slate-400 text-sm">
-//             <Clock size={16} className="text-purple-400" />
-//             <span>{event.time}</span>
-//           </div> */}
-//           <div className="flex items-center gap-2 text-slate-400 text-sm">
-//             <MapPin size={16} className="text-red-400" />
-//             <span>{event.location}</span>
-//           </div>
-
-//         </div>
-
-//         <p className="text-slate-400 text-sm line-clamp-4 mb-4">
-//           {event.description}
-//         </p>
-
-//         <div className="flex items-center justify-between">
-//           <span className="text-blue-400 text-sm font-medium">
-//             {event.gallery.length} Photos
-//           </span>
-//           <span className="text-slate-500 group-hover:text-amber-400/75 transition-colors">
-//             View Details →
-//           </span>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-const EventCard = ({
-  event,
-  onClick,
-}: {
-  event: Event;
-  onClick: () => void;
-}) => {
-  const [flipped, setFlipped] = useState(false);
-  const [currentImg, setCurrentImg] = useState<number>(0);
-
-  const [galleryOpen, setGalleryOpen] = useState(false);
-  const [galleryIndex, setGalleryIndex] = useState(0);
-
-  const openGallery = (index: number) => {
-    setGalleryIndex(index);
-    setGalleryOpen(true);
-  };
-
-  const handleNext = () =>
-    setCurrentImg((prev) => (prev + 1) % event.gallery.length);
-  const handlePrev = () =>
-    setCurrentImg((prev) => (prev === 0 ? event.gallery.length - 1 : prev - 1));
+  if (!event) return null;
 
   return (
     <>
-      <div
-        className="relative w-full h-[30rem] perspective"
-        onClick={() => {
-          if (!flipped) onClick();
-        }}
-      >
-        <div
-          className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
-            flipped ? "rotate-y-180" : ""
-          }`}
-        >
-          {/* FRONT SIDE */}
-          <div className="absolute w-full h-full backface-hidden bg-slate-900/50 rounded-xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-blue-500/20">
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src={event.coverImage}
-                alt={event.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent" />
-              <div className="absolute top-4 left-4">
-                <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                    event.status === "upcoming"
-                      ? "bg-green-500/20 text-green-400 border border-green-500/50"
-                      : "bg-slate-700/50 text-slate-300 border border-slate-600/50"
-                  }`}
-                >
-                  {event.status === "upcoming" ? "Coming Soon" : "Past Event"}
-                </span>
-              </div>
-            </div>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 opacity-100 animate-in fade-in zoom-in-95 duration-200">
+        {/* Lighter blur for performance, darker overlay */}
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
 
-            <div className="p-6 flex flex-col justify-between h-[calc(100%-12rem)]">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-400/75 transition-colors">
-                  {event.title}
-                </h3>
+        {/* Modal Container: Changed to max-h-[90dvh] and added overflow-y-auto for proper mobile scrolling */}
+        <div className="relative w-full max-w-7xl max-h-[90dvh] md:h-[85vh] bg-[#0a0a0a]/90 backdrop-blur-md rounded-2xl md:rounded-[2rem] shadow-2xl overflow-y-auto lg:overflow-hidden flex flex-col lg:flex-row border border-white/10 custom-scrollbar mt-10">
 
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-slate-400 text-sm">
-                    <Calendar size={16} className="text-blue-400" />
-                    <span>
-                      {new Date(event.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-slate-400 text-sm">
-                    <MapPin size={16} className="text-red-400" />
-                    <span>{event.location}</span>
-                  </div>
-                </div>
-
-                <p className="text-slate-400 text-sm line-clamp-5 mb-4">
-                  {event.description}
-                </p>
-              </div>
-
-              <div
-                className="flex items-center justify-between mt-auto"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFlipped(true);
-                }}
-              >
-                <span className="text-blue-400 text-sm font-medium">
-                  {event.gallery.length} Photos
-                </span>
-                <span className="text-slate-500 hover:text-amber-400/75 transition-colors">
-                  View Details →
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* BACK SIDE */}
-          <div className="absolute w-full h-full rotate-y-180 backface-hidden bg-slate-900/90 rounded-xl border border-slate-800 p-6 flex flex-col items-center justify-between">
-            <div className="text-center">
-              <h3 className="text-xl font-bold text-white mb-2">
-                {event.title}
-              </h3>
-              <p className="text-slate-400 text-sm mb-4">{event.description}</p>
-            </div>
-
-            {/* Gallery Section */}
-            {event.gallery.length > 0 && (
-              <div className="relative w-full flex items-center justify-center">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handlePrev();
-                  }}
-                  className="absolute left-2 p-2 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-50"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-
-                <img
-                  src={event.gallery[currentImg].url}
-                  alt={`Gallery ${currentImg + 1}`}
-                  className="w-full h-56 object-cover rounded-lg cursor-pointer transition-transform hover:scale-105"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    openGallery(currentImg);
-                  }}
-                />
-
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNext();
-                  }}
-                  className="absolute right-2 p-2 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-50"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </div>
-            )}
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setFlipped(false);
-              }}
-              className="mt-4 px-4 py-2 text-sm font-medium text-amber-400 border border-amber-400/50 rounded-md hover:bg-amber-400/10 transition"
-            >
-              Back
-            </button>
-          </div>
-        </div>
-
-        {/* ZOOM IMAGE MODAL */}
-        {/* {zoomed && (
-        <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-          onClick={() => setZoomed(false)}
-        >
-          <button className="absolute top-6 right-6 text-white">
-            <X size={28} />
+          {/* Mobile Close Button (Sticky) */}
+          <button onClick={onClose} className="sticky lg:absolute top-4 right-4 ml-auto z-30 p-2.5 bg-black/80 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors lg:hidden flex">
+            <X size={20} />
           </button>
-          <img
-            src={event.gallery[currentImg].url}
-            alt="Zoomed"
-            className="max-w-[90%] max-h-[80%] rounded-lg object-contain"
-          />
-        </div>
-      )} */}
-      </div>
-      <GalleryModal
-        images={event.gallery}
-        isOpen={galleryOpen}
-        onClose={() => setGalleryOpen(false)}
-        initialIndex={galleryIndex}
-      />
-    </>
-  );
-};
 
-const EventDetailsModal = ({
-  event,
-  isOpen,
-  onClose,
-}: {
-  event: Event | null;
-  isOpen: boolean;
-  onClose: () => void;
-}) => {
-  const [galleryOpen, setGalleryOpen] = useState(false);
-  const [galleryIndex, setGalleryIndex] = useState(0);
-
-  if (!isOpen || !event) return null;
-
-  const openGallery = (index: number) => {
-    setGalleryIndex(index);
-    setGalleryOpen(true);
-  };
-
-  return (
-    <>
-      <div className="fixed inset-0 z-40 overflow-y-auto">
-        <div className="min-h-screen px-4 flex items-center justify-center">
-          <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm"
-            onClick={onClose}
-          />
-
-          <div className="relative bg-slate-900 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-slate-700 shadow-2xl">
-            <button
-              onClick={onClose}
-              className="sticky top-4 float-right mr-4 text-slate-400 hover:text-red-400 transition-colors z-10"
-            >
-              <X size={28} />
-            </button>
-
-            {/* Cover Image */}
-            <div className="relative h-80 overflow-hidden">
-              <img
-                src={event.coverImage}
-                alt={event.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/70 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <span
-                  className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4 ${
-                    event.status === "upcoming"
-                      ? "bg-green-500/20 text-green-400 border border-green-500/50"
-                      : "bg-slate-700/50 text-slate-300 border border-slate-600/50"
-                  }`}
-                >
-                  {event.status === "upcoming" ? "Coming Soon" : "Past Event"}
-                </span>
-                <h2 className="text-4xl font-bold text-white">{event.title}</h2>
-              </div>
+          {/* Left Column: Details */}
+          <div className="w-full lg:w-[40%] h-auto lg:h-full relative shrink-0 border-b lg:border-b-0 lg:border-r border-white/10 lg:overflow-y-auto hidden-scrollbar bg-white/[0.02]">
+            <div className="relative h-56 lg:h-80 w-full shrink-0 -mt-12 lg:mt-0">
+              <img src={event.coverImage} alt={event.title} className="w-full h-full object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
             </div>
 
-            <div className="p-8">
-              {/* Event Info */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 bg-slate-800/50 rounded-xl p-6 border border-slate-700">
-                <div className="flex items-center gap-3">
-                  <Calendar size={20} className="text-blue-400" />
-                  <div>
-                    <p className="text-slate-400 text-xs">Date</p>
-                    <p className="text-white font-medium">
-                      {new Date(event.date).toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </p>
-                  </div>
+            <div className="p-6 lg:p-10 relative -mt-16 lg:-mt-20 z-10">
+              <span className="px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 mb-4 inline-block">
+                Past Highlight
+              </span>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight tracking-tight">{event.title}</h2>
+
+              <div className="flex flex-col gap-3 mb-8">
+                <div className="flex items-center gap-4 text-white/80 bg-black/40 p-4 rounded-xl md:rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+                  <Calendar className="text-amber-400 shrink-0" size={18} />
+                  <span className="text-sm font-medium tracking-wide">
+                    {new Date(event.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                  </span>
                 </div>
-                {/* <div className="flex items-center gap-3">
-                  <Clock size={20} className="text-purple-400" />
-                  <div>
-                    <p className="text-slate-400 text-xs">Time</p>
-                    <p className="text-white font-medium">{event.time}</p>
-                  </div>
-                </div> */}
-                <div className="flex items-center gap-3">
-                  <MapPin size={20} className="text-red-400" />
-                  <div>
-                    <p className="text-slate-400 text-xs">Location</p>
-                    <p className="text-white font-medium">{event.location}</p>
-                  </div>
+                <div className="flex items-center gap-4 text-white/80 bg-black/40 p-4 rounded-xl md:rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+                  <MapPin className="text-amber-400 shrink-0" size={18} />
+                  <span className="text-sm font-medium tracking-wide">{event.location}</span>
                 </div>
               </div>
 
-              {/* Additional Details */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-4">
-                  Event Details
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {event.details.organizer && (
-                    <div>
-                      <p className="text-slate-400 text-sm">Organizer</p>
-                      <p className="text-white">{event.details.organizer}</p>
-                    </div>
-                  )}
-                  {event.details.category && (
-                    <div>
-                      <p className="text-slate-400 text-sm">Category</p>
-                      <p className="text-white">{event.details.category}</p>
-                    </div>
-                  )}
-                </div>
-                {event.details.registrationLink &&
-                  event.status === "upcoming" && (
-                    <a
-                      href={event.details.registrationLink}
-                      className="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-                    >
-                      Register Now <ExternalLink size={16} />
-                    </a>
-                  )}
+              <div className="prose prose-invert prose-sm md:prose-base text-white/60 leading-relaxed font-light">
+                <p>{event.description}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Masonry Gallery */}
+          <div className="w-full lg:w-[60%] h-auto lg:h-full relative bg-black/40 lg:overflow-y-auto custom-scrollbar">
+            {/* Desktop Close Button */}
+            <button onClick={onClose} className="absolute top-8 right-8 z-20 p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors hidden lg:flex">
+              <X size={20} />
+            </button>
+
+            <div className="p-6 sm:p-8">
+              <div className="mb-6 lg:mb-8 mt-2 lg:mt-0">
+                <h3 className="text-2xl font-semibold text-white tracking-tight">Event Gallery</h3>
+                <p className="text-amber-400/70 text-sm mt-1">{event.gallery?.length || 0} moments captured</p>
               </div>
 
-              {/* Description */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-4">
-                  About This Event
-                </h3>
-                <p className="text-slate-300 leading-relaxed">
-                  {event.description}
-                </p>
-              </div>
-
-              {/* Gallery */}
-              <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-4">
-                  Event Gallery
-                </h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {event.gallery.map((image, index) => (
+              {event.gallery?.length > 0 ? (
+                <div className="columns-2 md:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4 pb-4">
+                  {event.gallery.map((img, i) => (
                     <div
-                      key={index}
-                      onClick={() => openGallery(index)}
-                      className="relative h-32 rounded-lg overflow-hidden cursor-pointer group"
+                      key={i}
+                      className="relative group rounded-xl md:rounded-2xl overflow-hidden cursor-pointer bg-white/5 border border-white/10 break-inside-avoid transform transition-transform duration-300 hover:-translate-y-1"
+                      onClick={() => setLightboxIndex(i)}
                     >
-                      <img
-                        src={image.url}
-                        alt={image.alt}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="text-white text-sm font-medium">
-                          View
-                        </span>
+                      <img src={img.url} alt={img.alt} className="w-full h-auto object-cover" loading="lazy" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                        <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-75 group-hover:scale-100 drop-shadow-lg" size={24} />
                       </div>
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Testimonials */}
-              {/* {event.testimonials && event.testimonials.length > 0 && (
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-4">What Attendees Say</h3>
-                  <div className="space-y-4">
-                    {event.testimonials.map((testimonial, index) => (
-                      <div key={index} className="bg-slate-800/50 rounded-lg p-6 border border-slate-700">
-                        <div className="flex items-start gap-4">
-                          <img
-                            src={testimonial.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${testimonial.name}`}
-                            alt={testimonial.name}
-                            className="w-12 h-12 rounded-full"
-                          />
-                          <div className="flex-1">
-                            <p className="text-white font-semibold">{testimonial.name}</p>
-                            <p className="text-slate-400 text-sm mb-2">{testimonial.role}</p>
-                            <p className="text-slate-300 italic">{testimonial.comment}</p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+              ) : (
+                <div className="h-40 flex items-center justify-center border border-dashed border-white/20 rounded-2xl bg-white/5">
+                  <p className="text-white/40 text-sm font-medium tracking-wide">No images available for this event.</p>
                 </div>
-              )} */}
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      <GalleryModal
+      <Lightbox
         images={event.gallery}
-        isOpen={galleryOpen}
-        onClose={() => setGalleryOpen(false)}
-        initialIndex={galleryIndex}
+        currentIndex={lightboxIndex ?? 0}
+        isOpen={lightboxIndex !== null}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={setLightboxIndex}
       />
     </>
   );
 };
 
-const FeaturedEventFlip: React.FC<{ featuredEvent: Event }> = ({
-  featuredEvent,
-}) => {
-  // Flip state (front / back)
-  const [flipped, setFlipped] = useState<boolean>(false);
+// --- Featured Event Hero ---
+const FeaturedEventHero = ({ event }: { event: Event }) => (
+  <div className="relative w-full min-h-[450px] md:min-h-[600px] lg:h-[70vh] rounded-[2rem] overflow-hidden  mb-16 md:mb-24 group border border-white/15 flex items-end shadow-2xl bg-black">
+    {/* Background Image & Overlays */}
+    <div className="absolute inset-0">
+      <img src={event.coverImage} alt={event.title} className="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105" />
+    </div>
+    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent mix-blend-overlay hidden md:block" />
 
-  // Gallery state
-  const [currentImg, setCurrentImg] = useState<number>(0);
-
-  // Zoom modal state
-  const [zoomed, setZoomed] = useState<boolean>(false);
-
-  // Navigation
-  const handleNext = (e?: React.SyntheticEvent) => {
-    e?.stopPropagation();
-    if (!featuredEvent.gallery || featuredEvent.gallery.length === 0) return;
-    setCurrentImg((p) => (p + 1) % featuredEvent.gallery.length);
-  };
-  const handlePrev = (e?: React.SyntheticEvent) => {
-    e?.stopPropagation();
-    if (!featuredEvent.gallery || featuredEvent.gallery.length === 0) return;
-    setCurrentImg((p) => (p === 0 ? featuredEvent.gallery.length - 1 : p - 1));
-  };
-
-  // Ensure index stays valid if gallery changes
-  useEffect(() => {
-    if (!featuredEvent.gallery || featuredEvent.gallery.length === 0) {
-      setCurrentImg(0);
-    } else {
-      setCurrentImg((idx) => Math.min(idx, featuredEvent.gallery.length - 1));
-    }
-  }, [featuredEvent.gallery]);
-
-  return (
-    <div className="mb-16">
-      <div className="flex items-center gap-2 mb-6">
-        <div className="w-1 h-8 bg-gradient-to-r from-amber-400 to-white rounded-full" />
-        <h2 className="text-3xl font-bold text-white">Featured Event</h2>
-      </div>
-
-      {/* FLIP CARD WRAPPER - needs global CSS: .perspective, .transform-style-preserve-3d, .backface-hidden, .rotate-y-180 */}
-      <div className="relative w-full h-[600px] perspective">
-        <div
-          // container that rotates
-          className={`relative w-full h-full transition-transform duration-700 transform-style-preserve-3d ${
-            flipped ? "rotate-y-180" : ""
-          }`}
-        >
-          {/* FRONT */}
-          <div
-            className="absolute w-full h-full backface-hidden rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 cursor-default"
-            aria-hidden={flipped}
-          >
-            <div className="relative h-full">
-              <img
-                src={featuredEvent.coverImage}
-                alt={featuredEvent.title}
-                className="w-full h-full object-cover transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
-              <div className="absolute top-6 left-6">
-                <div className="p-[2px] rounded-full bg-gradient-to-r from-amber-400 to-white">
-                  <span
-                    className="
-        block px-4 py-2 rounded-full text-sm font-semibold
-        bg-black/90 text-white
-      "
-                  >
-                    {featuredEvent.status === "upcoming"
-                      ? "Coming Soon"
-                      : "Featured"}
-                  </span>
-                </div>
-              </div>
-
-              <div className="absolute bottom-8 left-8 right-8">
-                <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">
-                  {featuredEvent.title}
-                </h3>
-
-                <div className="flex flex-wrap gap-4 mb-4 text-slate-300">
-                  <div className="flex items-center gap-2 text-sm md:text-xl">
-                    <Calendar size={18} className="text-blue-400" />
-                    <span>
-                      {new Date(featuredEvent.date).toLocaleDateString(
-                        "en-US",
-                        {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        }
-                      )}
-                    </span>
-                  </div>
-                  {featuredEvent.location && (
-                    <div className="flex items-center gap-2 text-gray-300">
-                      <MapPin className="w-5 h-5 text-red-400 shrink-0" />
-                      <span className="text-sm md:text-xl font-medium">
-                        {featuredEvent.location}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                <p className="text-slate-300 text-sm md:text-lg mb-4 line-clamp-6">
-                  {featuredEvent.description}
-                </p>
-
-                <div className="flex justify-start items-center gap-2">
-                  {/* <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setFlipped(true);
-                    }}
-                    className="px-6 py-3 border-2 border-slate-500 text-white rounded-full transition-colors font-medium"
-                    aria-pressed={flipped}
-                    aria-label="View featured event details"
-                  >
-                    View Details
-                  </button> */}
-
-                  <button
-                    className="px-6 py-3 border-2 border-slate-500 text-white rounded-full transition-colors font-medium"
-                    aria-pressed={flipped}
-                    aria-label="View featured event details"
-                  >
-                    <Link
-                      href={"https://moongazing.vercel.app/"}
-                      target="blank"
-                    >
-                      {" "}
-                      vist website
-                    </Link>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* BACK */}
-          <div
-            className="absolute w-full h-full rotate-y-180 backface-hidden bg-slate-900/95 rounded-2xl border border-slate-800 p-6 flex flex-col items-center justify-between"
-            aria-hidden={!flipped}
-          >
-            {/* Title + short description */}
-            <div className="w-full text-center">
-              <h3 className="text-3xl font-bold text-white mb-2">
-                {featuredEvent.title}
-              </h3>
-              <p className="text-slate-300 text-sm mb-4">
-                {featuredEvent.description}
-              </p>
-            </div>
-
-            <h3>Past Glimps</h3>
-
-            {/* Gallery area */}
-            <div className="relative w-full flex items-center justify-center">
-              {/* Prev */}
-              <button
-                onClick={handlePrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 p-3 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-10"
-                aria-label="Previous image"
-              >
-                <ChevronLeft size={20} />
-              </button>
-
-              {/* Image (contain with letterboxing) */}
-              <div className="w-full max-w-4xl max-h-[50vh] rounded-lg overflow-hidden flex items-center justify-center ">
-                <img
-                  src={
-                    featuredEvent.gallery?.[currentImg]?.url ??
-                    featuredEvent.coverImage
-                  }
-                  alt={
-                    featuredEvent.gallery?.[currentImg]?.alt ??
-                    `${featuredEvent.title} image ${currentImg + 1}`
-                  }
-                  className="max-w-full max-h-full object-contain cursor-pointer rounded-lg"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setZoomed(true);
-                  }}
-                />
-              </div>
-
-              {/* Next */}
-              <button
-                onClick={handleNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-3 bg-slate-800/70 rounded-full hover:bg-slate-700 transition z-10"
-                aria-label="Next image"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-
-            {/* Controls */}
-            <div className="w-full flex items-center justify-between mt-4">
-              <div className="text-slate-400">
-                {featuredEvent.gallery?.length ? (
-                  <span>
-                    {currentImg + 1} / {featuredEvent.gallery.length}
-                  </span>
-                ) : (
-                  <span>0 / 0</span>
-                )}
-              </div>
-
-              <div className="flex gap-3">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setFlipped(false);
-                  }}
-                  className="px-4 py-2 text-sm font-medium text-amber-400 border border-amber-400/50 rounded-md hover:bg-amber-400/10 transition"
-                >
-                  Back
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ZOOM OVERLAY */}
-        {zoomed && (
-          <div
-            className="fixed inset-0 bg-black/85 flex items-center justify-center z-50"
-            onClick={() => setZoomed(false)}
-            role="dialog"
-            aria-modal="true"
-          >
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setZoomed(false);
-              }}
-              className="absolute top-6 right-6 text-white z-50"
-              aria-label="Close zoom"
-            >
-              <X size={28} />
-            </button>
-
-            <div className="max-w-[90%] max-h-[85%] bg-black rounded-md overflow-hidden flex items-center justify-center">
-              <img
-                src={
-                  featuredEvent.gallery?.[currentImg]?.url ??
-                  featuredEvent.coverImage
-                }
-                alt={
-                  featuredEvent.gallery?.[currentImg]?.alt ??
-                  featuredEvent.title
-                }
-                className="max-w-full max-h-full object-contain"
-              />
-            </div>
-          </div>
-        )}
+    {/* Featured Badge */}
+    <div className="absolute top-6 left-6 md:top-10 md:left-10 z-20">
+      <div className="flex items-center gap-2.5 px-4 md:px-5 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/20">
+        <div className="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-[0_0_10px_rgba(251,191,36,1)]" />
+        <span className="text-[10px] md:text-xs font-bold text-white uppercase tracking-widest">Now Featured</span>
       </div>
     </div>
-  );
-};
 
-export default function EventsPage() {
-  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const [detailsModalOpen, setDetailsModalOpen] = useState(false);
-
-  const upcomingEvents = eventsData.filter((e) => e.status === "upcoming");
-  const pastEvents = eventsData.filter((e) => e.status === "past");
-  const featuredEvent = upcomingEvents.find((e) => e.featured);
-
-  const openEventDetails = (event: Event) => {
-    setSelectedEvent(event);
-    setDetailsModalOpen(true);
-  };
-
-  return (
-    <div className="min-h-screen tracking-[0.10em] ">
-      {/* Header */}
-      <div className="relative h-64 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-slate-950" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920')] bg-cover bg-center opacity-20" />
-        <div className="relative z-10 text-center">
-          <h1 className="text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text ">
-            Events
-          </h1>
-          {/* <p className="text-slate-300 text-lg">
-            Showing {eventsData.length} events
-          </p> */}
+    {/* Content */}
+    <div className="relative z-10 p-6 py-10 md:p-6  lg:p-16 w-full max-w-4xl">
+      <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-4 md:mb-6 text-white/80 font-medium tracking-wide text-sm md:text-base mt-5">
+        <div className="flex items-center gap-2">
+          <Calendar size={18} className="text-amber-400" />
+          <span>{new Date(event.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+        </div>
+        <div className="w-1.5 h-1.5 rounded-full bg-white/30 hidden sm:block" />
+        <div className="flex items-center gap-2">
+          <MapPin size={18} className="text-amber-400" />
+          <span>{event.location}</span>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Featured Event */}
-        {featuredEvent && <FeaturedEventFlip featuredEvent={featuredEvent} />}
+      <h2 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white mb-4 md:mb-6 tracking-tight leading-[1.1]">
+        {event.title}
+      </h2>
+      <p className="text-white/70 text-base md:text-lg lg:text-xl mb-8 md:mb-10 max-w-2xl font-light leading-relaxed line-clamp-4 md:line-clamp-none">
+        {event.description}
+      </p>
 
-        {/* Upcoming Events */}
-        {/* {upcomingEvents.filter(e => !e.featured).length > 0 && (
-          <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-1 h-8 bg-gradient-to-r from-amber-400 to-white rounded-full" />
-              <h2 className="text-3xl font-bold text-white">Upcoming Events</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {upcomingEvents.filter(e => !e.featured).map(event => (
-                <EventCard
-                  key={event.id}
-                  event={event}
-                  onClick={() => openEventDetails(event)}
-                />
-              ))}
-            </div>
-          </div>
-        )} */}
+      {event?.externalLink && (
+        <Link
+          href={event.externalLink}
+          target="_blank"
+          className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 bg-amber-500 hover:bg-amber-400 text-black text-sm md:text-base font-bold rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(251,191,36,0.3)] hover:-translate-y-1"
+        >
+          Visit Website <ExternalLink size={18} />
+        </Link>
+      )}
+    </div>
+  </div>
+);
 
-        {/* Past Events */}
-        <div>
-          <div className="flex items-center gap-2 mb-6">
-            <div className="w-1 h-8 bg-gradient-to-r from-amber-400 to-white rounded-full" />
-            <h2 className="text-3xl font-bold text-white">Past Events</h2>
+// --- Standard Event Card ---
+const EventCard = ({ event, onClick }: { event: Event; onClick: () => void }) => (
+  <div
+    onClick={onClick}
+    className="group relative bg-[#0a0a0a]/40 hover:bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/10 rounded-[2rem] overflow-hidden cursor-pointer hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl hover:border-white/20 flex flex-col h-full"
+  >
+    <div className="relative h-56 md:h-64 overflow-hidden shrink-0">
+      <img src={event.coverImage} alt={event.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent" />
+
+      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/80 backdrop-blur-md text-white/90 text-xs px-3 py-1.5 rounded-full border border-white/10 font-medium tracking-wide">
+        <MapPin size={12} className="text-amber-400" /> {event.location}
+      </div>
+
+      {event.gallery?.length > 0 && (
+        <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-md text-amber-400 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/10">
+          {event.gallery.length} Photos
+        </div>
+      )}
+    </div>
+
+    <div className="p-6 md:p-8 flex flex-col grow relative z-10">
+      <div className="text-[11px] md:text-xs text-amber-400 mb-3 font-bold uppercase tracking-widest flex items-center gap-2">
+        <Calendar size={14} />
+        {new Date(event.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+      </div>
+
+      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-tight group-hover:text-amber-400 transition-colors">{event.title}</h3>
+      <p className="text-white/60 text-sm line-clamp-2 mb-8 font-light grow leading-relaxed">{event.description}</p>
+
+      <div className="pt-5 border-t border-white/10 mt-auto flex items-center justify-between group/btn">
+        <span className="text-white/80 group-hover:text-white text-sm font-semibold tracking-wider flex items-center gap-2 transition-colors">
+          View Gallery
+        </span>
+        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover/btn:bg-amber-500 transition-colors border border-white/5">
+          <ArrowRight size={14} className="text-white transform group-hover/btn:translate-x-1 transition-transform group-hover/btn:text-black" />
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+// --- Main Page Component ---
+export default function EventsPage() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+
+  useEffect(() => {
+    // In a real app, replace with your actual fetch logic
+    fetch("/eventdata.json").then((res) => res.json()).then(setEvents).catch(console.error);
+  }, []);
+
+  const upcomingEvents = events.filter((e) => e.status === "upcoming");
+  const pastEvents = events.filter((e) => e.status === "past");
+  const featuredEvent = upcomingEvents.find((e) => e.featured) || upcomingEvents[0];
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (selectedEvent) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
+
+    return () => { document.body.style.overflow = "auto" };
+  }, [selectedEvent]);
+
+  return (
+    // Transparent background allows the parent "stars" to show completely through
+    <div className="min-h-screen bg-transparent text-white selection:bg-amber-500/30 font-sans">
+
+      {/* Global styles for sleek, premium scrollbars matching the glass theme */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+        .hidden-scrollbar::-webkit-scrollbar { display: none; }
+      `}} />
+
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative z-10">
+
+        {/* Header Section */}
+        <div className="mb-10 md:mb-16 text-center md:text-left">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tighter mb-4 md:mb-6">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">Events</span>
+          </h1>
+          <p className="text-white/60 text-sm md:text-xl font-light max-w-2xl mx-auto md:mx-0">
+            Discover what we are building next, and explore the visual archives of our past highlights.
+          </p>
+        </div>
+
+        {/* Featured Event Hero */}
+        {featuredEvent && (
+          <FeaturedEventHero event={featuredEvent} />
+        )}
+
+        {/* Past Events Grid */}
+        <div className="space-y-6 md:space-y-12">
+          <div className="flex items-center gap-4 md:gap-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Event Archives</h2>
+            <div className="h-px bg-gradient-to-r from-white/20 to-transparent flex-1" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {pastEvents.map((event) => (
-              <EventCard key={event.id} event={event} onClick={() => {}} />
+              <EventCard key={event.id} event={event} onClick={() => setSelectedEvent(event)} />
             ))}
           </div>
         </div>
       </div>
 
-      {/* Event Details Modal */}
-      <EventDetailsModal
-        event={selectedEvent}
-        isOpen={detailsModalOpen}
-        onClose={() => setDetailsModalOpen(false)}
-      />
+      {/* Master Modal for Gallery & Details */}
+      <EventGalleryModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />
     </div>
   );
 }
