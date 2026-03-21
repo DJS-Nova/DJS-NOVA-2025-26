@@ -1,22 +1,23 @@
 [
   {
-  "id": "1",
-  "title": "Event Horizon 3.0",
-  "description": "Event Horizon 3.0 is the latest edition of our flagship astronomy event, bringing together experts, enthusiasts, and students for an immersive experience in space science, innovation, and exploration.",
-  "date": "2026-03-25",
-  "time": "10:00 AM onwards",
-  "location": "DJ Sanghvi College of Engineering, Mumbai",
-  "attendees": 300,
-  "status": "upcoming",
-  "featured": true,
-  "externalLink": "https://eventhorizon.djsnova.space/",
-  "coverImage": "/Events Images/Event Horizon 2.0/Shekhokar Sir and Guest of Honor.JPG",
-  "gallery": [],
-  "details": {
-    "organizer": "DJS Nova Space Committee",
-    "category": "Flagship Event"
-  }
-},{
+    "id": "1",
+    "title": "Event Horizon 3.0",
+    "description": "Event Horizon 3.0 is the latest edition of our flagship astronomy event, bringing together experts, enthusiasts, and students for an immersive experience in space science, innovation, and exploration.",
+    "date": "2026-03-25",
+    "time": "10:00 AM onwards",
+    "location": "DJ Sanghvi College of Engineering, Mumbai",
+    "attendees": 300,
+    "status": "upcoming",
+    "featured": true,
+    "externalLink": "https://eventhorizon.djsnova.space/",
+    "coverImage": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114808/Events%20Images/Event%20Horizon%202.0/Shekhokar%20Sir%20and%20Guest%20of%20Honor.JPG.jpg",
+    "gallery": [],
+    "details": {
+      "organizer": "DJS Nova Space Committee",
+      "category": "Flagship Event"
+    }
+  },
+  {
     "id": "2",
     "title": "Moongazing 2.0",
     "description": "An advanced astronomy event featuring telescope observations, lectures, quizzes, and both solar and lunar viewing sessions.",
@@ -27,47 +28,87 @@
     "status": "past",
     "featured": true,
     "externalLink": "https://moongazing.djsnova.space/",
-    "coverImage": "/Events Images/Moongazing 2.0/MOON - PC Sanchit.jpg",
+    "coverImage": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114809/Events%20Images/Moongazing%202.0/MOON%20-%20PC%20Sanchit.jpg.jpg",
     "gallery": [
-      { "url": "/Events Images/Moongazing 2.0/Astronomy Quiz.jpg", "alt": "Quiz" },
-      { "url": "/Events Images/Moongazing 2.0/Conference Room Gathering.jpg", "alt": "Gathering" },
-      { "url": "/Events Images/Moongazing 2.0/Core and Co-Comm Terrace NIGHT.jpg", "alt": "Night Team" },
-      { "url": "/Events Images/Moongazing 2.0/Core MORNING.JPG", "alt": "Morning Team" },
-      { "url": "/Events Images/Moongazing 2.0/Core Photo with Previous Core NIGHT.jpg", "alt": "Group Photo" },
-      { "url": "/Events Images/Moongazing 2.0/DJS NOVA INTRO.jpg", "alt": "Intro Session" },
-      { "url": "/Events Images/Moongazing 2.0/MOON - PC Sanchit.jpg", "alt": "Moon" },
-      { "url": "/Events Images/Moongazing 2.0/Moon Gazing Lecture.jpg", "alt": "Lecture" },
-      { "url": "/Events Images/Moongazing 2.0/Observing.jpg", "alt": "Observing" },
-      { "url": "/Events Images/Moongazing 2.0/Telescope Setup Terrace.jpg", "alt": "Setup" }
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114812/Events%20Images/Moongazing%202.0/Astronomy%20Quiz.jpg.jpg",
+        "alt": "Quiz"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114814/Events%20Images/Moongazing%202.0/Conference%20Room%20Gathering.jpg.jpg",
+        "alt": "Gathering"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114816/Events%20Images/Moongazing%202.0/Core%20and%20Co-Comm%20Terrace%20NIGHT.jpg.jpg",
+        "alt": "Night Team"
+      },
+      {
+        "url": "/Events Images/Moongazing 2.0/Core MORNING.JPG",
+        "alt": "Morning Team"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114823/Events%20Images/Moongazing%202.0/Core%20Photo%20with%20Previous%20Core%20NIGHT.jpg.jpg",
+        "alt": "Group Photo"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114825/Events%20Images/Moongazing%202.0/DJS%20NOVA%20INTRO.jpg.jpg",
+        "alt": "Intro Session"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114809/Events%20Images/Moongazing%202.0/MOON%20-%20PC%20Sanchit.jpg.jpg",
+        "alt": "Moon"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114828/Events%20Images/Moongazing%202.0/Moon%20Gazing%20Lecture.jpg.jpg",
+        "alt": "Lecture"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114829/Events%20Images/Moongazing%202.0/Observing.jpg.jpg",
+        "alt": "Observing"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114831/Events%20Images/Moongazing%202.0/Telescope%20Setup%20Terrace.jpg.jpg",
+        "alt": "Setup"
+      }
     ],
     "details": {
       "organizer": "DJS Nova Space Committee",
       "category": "Astronomy Event"
     }
   },
-
   {
     "id": "3",
     "title": "ISRO Intern Seminar",
-    "description": "A seminar showcasing ISRO interns’ experiences, featuring panel discussions and startup presentations with insights into space research and industry.",
+    "description": "A seminar showcasing ISRO interns\u00e2\u20ac\u2122 experiences, featuring panel discussions and startup presentations with insights into space research and industry.",
     "date": "2025-01-25",
     "time": "11:00 AM - 3:00 PM",
     "location": "Seminar Hall, DJ Sanghvi College of Engineering, Mumbai",
     "attendees": 150,
     "status": "past",
-    "coverImage": "/Events Images/ISRO Intern Seminar/Day 1 Panelist.jpg",
+    "coverImage": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114832/Events%20Images/ISRO%20Intern%20Seminar/Day%201%20Panelist.jpg.jpg",
     "gallery": [
-      { "url": "/Events Images/ISRO Intern Seminar/Day 1 Panelist.jpg", "alt": "Panel" },
-      { "url": "/Events Images/ISRO Intern Seminar/Day 1 Startup.jpg", "alt": "Startup" },
-      { "url": "/Events Images/ISRO Intern Seminar/Day 2 Panelist.jpg", "alt": "Panel" },
-      { "url": "/Events Images/ISRO Intern Seminar/Day 2 Startup.jpg", "alt": "Startup" }
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114832/Events%20Images/ISRO%20Intern%20Seminar/Day%201%20Panelist.jpg.jpg",
+        "alt": "Panel"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114833/Events%20Images/ISRO%20Intern%20Seminar/Day%201%20Startup.jpg.jpg",
+        "alt": "Startup"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114834/Events%20Images/ISRO%20Intern%20Seminar/Day%202%20Panelist.jpg.jpg",
+        "alt": "Panel"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114834/Events%20Images/ISRO%20Intern%20Seminar/Day%202%20Startup.jpg.jpg",
+        "alt": "Startup"
+      }
     ],
     "details": {
       "organizer": "DJS Nova Space Committee",
       "category": "Seminar"
     }
   },
-
   {
     "id": "4",
     "title": "Industrial Visit 2025",
@@ -77,25 +118,55 @@
     "location": "Industrial Facility",
     "attendees": 120,
     "status": "past",
-    "coverImage": "/Events Images/IV 25/Copy of IMG_9638.JPG",
+    "coverImage": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114836/Events%20Images/IV%2025/Copy%20of%20IMG_9638.JPG.jpg",
     "gallery": [
-      { "url": "/Events Images/IV 25/Copy of DSC00537.JPG", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_0053.jpg", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_3013.jpg", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_3072.jpg", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_5073.jpg", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_9638.JPG", "alt": "Group Photo" },
-      { "url": "/Events Images/IV 25/Copy of IMG_9665.JPG", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_9666.JPG", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_9681.JPG", "alt": "Visit" },
-      { "url": "/Events Images/IV 25/Copy of IMG_9790.JPG", "alt": "Visit" }
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114839/Events%20Images/IV%2025/Copy%20of%20DSC00537.JPG.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114841/Events%20Images/IV%2025/Copy%20of%20IMG_0053.jpg.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114842/Events%20Images/IV%2025/Copy%20of%20IMG_3013.jpg.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114843/Events%20Images/IV%2025/Copy%20of%20IMG_3072.jpg.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114844/Events%20Images/IV%2025/Copy%20of%20IMG_5073.jpg.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114836/Events%20Images/IV%2025/Copy%20of%20IMG_9638.JPG.jpg",
+        "alt": "Group Photo"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114847/Events%20Images/IV%2025/Copy%20of%20IMG_9665.JPG.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114848/Events%20Images/IV%2025/Copy%20of%20IMG_9666.JPG.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114850/Events%20Images/IV%2025/Copy%20of%20IMG_9681.JPG.jpg",
+        "alt": "Visit"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114851/Events%20Images/IV%2025/Copy%20of%20IMG_9790.JPG.jpg",
+        "alt": "Visit"
+      }
     ],
     "details": {
       "organizer": "DJS Nova Space Committee",
       "category": "Industrial Visit"
     }
   },
-{
+  {
     "id": "5",
     "title": "Event Horizon 2.0",
     "description": "Event Horizon 2.0 featured expert talks, guest interactions, and engaging sessions in astronomy and space science, creating an enriching learning experience for participants.",
@@ -105,24 +176,72 @@
     "attendees": 200,
     "status": "past",
     "featured": true,
-    "coverImage": "/Events Images/Event Horizon 2.0/Shekhokar Sir and Guest of Honor.JPG",
+    "coverImage": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114808/Events%20Images/Event%20Horizon%202.0/Shekhokar%20Sir%20and%20Guest%20of%20Honor.JPG.jpg",
     "gallery": [
-      { "url": "/Events Images/Event Horizon 2.0/Copy of IMG_0311.jpg", "alt": "Event Moment" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of IMG_0311(1).jpg", "alt": "Event Moment" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of IMG_7554.jpg", "alt": "Event Moment" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of IMG_7554(1).jpg", "alt": "Event Moment" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of IMG_7599.jpg", "alt": "Event Moment" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of IMG_7648.JPG", "alt": "Event Highlights" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of IMG_7648(1).JPG", "alt": "Event Highlights" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0095.JPG", "alt": "Session" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0462.JPG", "alt": "Session" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0547.JPG", "alt": "Audience" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0689.JPG", "alt": "Audience" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0718.JPG", "alt": "Audience" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0766.JPG", "alt": "Event" },
-      { "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0768.JPG", "alt": "Event" },
-      { "url": "/Events Images/Event Horizon 2.0/Core with Dr. Arvind Paranjpe.jpg", "alt": "Core Team with Guest" },
-      { "url": "/Events Images/Event Horizon 2.0/Shekhokar Sir and Guest of Honor.JPG", "alt": "Guest of Honor" }
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114854/Events%20Images/Event%20Horizon%202.0/Copy%20of%20IMG_0311.jpg.jpg",
+        "alt": "Event Moment"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114856/Events%20Images/Event%20Horizon%202.0/Copy%20of%20IMG_0311%281%29.jpg.jpg",
+        "alt": "Event Moment"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114859/Events%20Images/Event%20Horizon%202.0/Copy%20of%20IMG_7554.jpg.jpg",
+        "alt": "Event Moment"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114860/Events%20Images/Event%20Horizon%202.0/Copy%20of%20IMG_7554%281%29.jpg.jpg",
+        "alt": "Event Moment"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114863/Events%20Images/Event%20Horizon%202.0/Copy%20of%20IMG_7599.jpg.jpg",
+        "alt": "Event Moment"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114864/Events%20Images/Event%20Horizon%202.0/Copy%20of%20IMG_7648.JPG.jpg",
+        "alt": "Event Highlights"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114865/Events%20Images/Event%20Horizon%202.0/Copy%20of%20IMG_7648%281%29.JPG.jpg",
+        "alt": "Event Highlights"
+      },
+      {
+        "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0095.JPG",
+        "alt": "Session"
+      },
+      {
+        "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0462.JPG",
+        "alt": "Session"
+      },
+      {
+        "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0547.JPG",
+        "alt": "Audience"
+      },
+      {
+        "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0689.JPG",
+        "alt": "Audience"
+      },
+      {
+        "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0718.JPG",
+        "alt": "Audience"
+      },
+      {
+        "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0766.JPG",
+        "alt": "Event"
+      },
+      {
+        "url": "/Events Images/Event Horizon 2.0/Copy of _DSC0768.JPG",
+        "alt": "Event"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114887/Events%20Images/Event%20Horizon%202.0/Core%20with%20Dr.%20Arvind%20Paranjpe.jpg.jpg",
+        "alt": "Core Team with Guest"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114808/Events%20Images/Event%20Horizon%202.0/Shekhokar%20Sir%20and%20Guest%20of%20Honor.JPG.jpg",
+        "alt": "Guest of Honor"
+      }
     ],
     "details": {
       "organizer": "DJS Nova Space Committee",
@@ -138,17 +257,24 @@
     "location": "College Terrace",
     "attendees": 180,
     "status": "past",
-    "coverImage": "/Events Images/Moongazing 1.0/Copy of MoonGazingCover.jpg",
+    "coverImage": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114889/Events%20Images/Moongazing%201.0/Copy%20of%20MoonGazingCover.jpg.jpg",
     "gallery": [
-      { "url": "/Events Images/Moongazing 1.0/Copy of MoonGazingCover.jpg", "alt": "Cover" },
-      { "url": "/Events Images/Moongazing 1.0/Copy of MoonGazingSetup.jpg", "alt": "Setup" },
-      { "url": "/Events Images/Moongazing 1.0/Copy of MoongazingMoon.jpg", "alt": "Moon" }
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114889/Events%20Images/Moongazing%201.0/Copy%20of%20MoonGazingCover.jpg.jpg",
+        "alt": "Cover"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114890/Events%20Images/Moongazing%201.0/Copy%20of%20MoonGazingSetup.jpg.jpg",
+        "alt": "Setup"
+      },
+      {
+        "url": "https://res.cloudinary.com/dcnbcl3id/image/upload/v1774114891/Events%20Images/Moongazing%201.0/Copy%20of%20MoongazingMoon.jpg.jpg",
+        "alt": "Moon"
+      }
     ],
     "details": {
       "organizer": "DJS Nova Space Committee",
       "category": "Astronomy"
     }
   }
-
-  
 ]
