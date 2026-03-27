@@ -42,7 +42,7 @@ export const getIconComponent = (iconName: string) => {
     }
 };
 
-export const filterAchievementsByCategory = (data: any[], category: string) => {
+export const filterAchievementsByCategory = (data: { category: string; [key: string]: unknown }[], category: string) => {
     return category === "all"
         ? data
         : data.filter((item) => item.category === category);

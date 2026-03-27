@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -62,7 +63,7 @@ const Lightbox = ({
 
   return (
     // Performance Fix: Removed backdrop-blur-3xl, replaced with solid 95% black to stop mobile lag
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 animate-in fade-in duration-200" onClick={onClose}>
+    <div className="fixed inset-0 z-70 flex items-center justify-center bg-black/95 animate-in fade-in duration-200" onClick={onClose}>
       <button onClick={onClose} className="absolute top-16 right-4 md:top-8 md:right-8 text-white/50 hover:text-amber-400 bg-white/5 hover:bg-white/10 p-3 rounded-full transition-all z-20 border border-white/10">
         <X size={24} />
       </button>
@@ -118,7 +119,7 @@ const EventGalleryModal = ({ event, onClose }: { event: Event | null; onClose: (
           <div className="w-full lg:w-[40%] h-auto lg:h-full relative shrink-0 border-b lg:border-b-0 lg:border-r border-white/10 lg:overflow-y-auto hidden-scrollbar bg-white/[0.02]">
             <div className="relative h-56 lg:h-80 w-full shrink-0 -mt-12 lg:mt-0">
               <img src={event.coverImage} alt={event.title} className="w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
             </div>
 
             <div className="p-6 lg:p-10 relative -mt-16 lg:-mt-20 z-10">
@@ -160,7 +161,7 @@ const EventGalleryModal = ({ event, onClose }: { event: Event | null; onClose: (
               </div>
 
               {event.gallery?.length > 0 ? (
-                <div className="columns-2 md:columns-3 gap-3 md:gap-4 space-y-3 md:space-y-4 pb-4">
+                <div className="columns-1 md:columns-2 gap-4 md:gap-6 space-y-4 md:space-y-6 pb-4">
                   {event.gallery.map((img, i) => (
                     <div
                       key={i}
@@ -202,8 +203,8 @@ const FeaturedEventHero = ({ event }: { event: Event }) => (
     <div className="absolute inset-0">
       <img src={event.coverImage} alt={event.title} className="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105" />
     </div>
-    <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
-    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent mix-blend-overlay hidden md:block" />
+    <div className="absolute inset-0 bg-linear-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+    <div className="absolute inset-0 bg-linear-to-r from-black/80 to-transparent mix-blend-overlay hidden md:block" />
 
     {/* Featured Badge */}
     <div className="absolute top-6 left-6 md:top-10 md:left-10 z-20">
@@ -255,7 +256,7 @@ const EventCard = ({ event, onClick }: { event: Event; onClick: () => void }) =>
   >
     <div className="relative h-56 md:h-64 overflow-hidden shrink-0">
       <img src={event.coverImage} alt={event.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-[#0a0a0a]/20 to-transparent" />
 
       <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/80 backdrop-blur-md text-white/90 text-xs px-3 py-1.5 rounded-full border border-white/10 font-medium tracking-wide">
         <MapPin size={12} className="text-amber-400" /> {event.location}
@@ -330,7 +331,7 @@ export default function EventsPage() {
         {/* Header Section */}
         <div className="mb-10 md:mb-16 text-center md:text-left">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tighter mb-4 md:mb-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">Events</span>
+            Our <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-200 via-amber-400 to-amber-500">Events</span>
           </h1>
           <p className="text-white/60 text-sm md:text-xl font-light max-w-2xl mx-auto md:mx-0">
             Discover what we are building next, and explore the visual archives of our past highlights.
@@ -346,7 +347,7 @@ export default function EventsPage() {
         <div className="space-y-6 md:space-y-12">
           <div className="flex items-center gap-4 md:gap-6">
             <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Event Archives</h2>
-            <div className="h-px bg-gradient-to-r from-white/20 to-transparent flex-1" />
+            <div className="h-px bg-linear-to-r from-white/20 to-transparent flex-1" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
