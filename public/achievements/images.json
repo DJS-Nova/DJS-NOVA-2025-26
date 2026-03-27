@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "Certificate 1",
+    "url": "/achievements/cert1.jpeg",
+    "type": "certificate"
+  },
+  {
+    "id": 2,
+    "title": "Certificate 2",
+    "url": "/achievements/cert2.jpeg",
+    "type": "certificate"
+  },
+  {
+    "id": 3,
+    "title": "Certificate 3",
+    "url": "/achievements/cert3.jpeg",
+    "type": "certificate"
+  },
+  {
+    "id": 4,
+    "title": "Certificate 4",
+    "url": "/achievements/cert4.jpeg",
+    "type": "certificate"
+  },
+  {
+    "id": 5,
+    "title": "Certificate 5",
+    "url": "/achievements/cert5.jpeg",
+    "type": "certificate"
+  },
+  {
+    "id": 6,
+    "title": "Certificate 6",
+    "url": null,
+    "type": "placeholder"
+  },
+  {
+    "id": 7,
+    "title": "Certificate 7",
+    "url": null,
+    "type": "placeholder"
+  },
+  {
+    "id": 8,
+    "title": "Certificate 8",
+    "url": null,
+    "type": "placeholder"
+  },
+  {
+    "id": 9,
+    "title": "Certificate 9",
+    "url": null,
+    "type": "placeholder"
+  },
+  {
+    "id": 10,
+    "title": "Certificate 10",
+    "url": null,
+    "type": "placeholder"
+  }
+]

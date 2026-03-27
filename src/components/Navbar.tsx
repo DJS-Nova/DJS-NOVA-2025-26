@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Camera, Users, CalendarDays, Home, Menu, X } from "lucide-react";
+import { Camera, Users, CalendarDays, Home, Menu, X, Trophy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,6 +19,7 @@ const Navbar = () => {
     },
     { name: "Team", url: "/team", icon: <Users size={18} /> },
     { name: "Event", url: "/event", icon: <CalendarDays size={18} /> },
+    { name: "Achievements", url: "/achievements", icon: <Trophy size={18} /> },
     // { name: "Moon Gazing 2.0", url: "https://moongazing.djsnova.space", icon: <CalendarDays size={18} />, onblank: true },
     { name: "Event Horizon 3.0", url: "https://eventhorizon.djsnova.space", icon: <CalendarDays size={18} />, onblank: true },
   ];
