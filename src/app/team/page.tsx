@@ -15,6 +15,7 @@ interface Member {
   name: string;
   role: string;
   image?: string;
+  imagePosition?: string; // Adjust layout: "center top", "center 20%", "center bottom", etc.
   social?: SocialLinks;
 }
 
@@ -31,7 +32,6 @@ interface TeamData {
   departments: {
     research: Member[];
     tech: {
-      ai: Member;
       webdev: Member;
     };
     outreach: Member[];
@@ -62,6 +62,7 @@ const teamsData: TeamData[] = [
         name: "Akshat Singh",
         role: "Vice Chairperson (Technical)",
         image: "/team/akshatsingh.webp",
+        imagePosition: "center top",
         social: { linkedin: "#" },
       },
       secretary: {
@@ -101,16 +102,11 @@ const teamsData: TeamData[] = [
       ],
 
       tech: {
-        ai: {
-          name: "Mihir Mashruwala",
-          role: "Tech-AI Executive",
-          image: "https://api.dicebear.com/7.x/avataaars/svg?seed=TechAI",
-          social: { linkedin: "#" },
-        },
         webdev: {
           name: "Ketan Gaikwad",
           role: "Tech-WebDev Executive",
-          image: "https://api.dicebear.com/7.x/avataaars/svg?seed=WebDev",
+          image: "/team/ketan.jpg",
+          imagePosition: "center 50%",
           social: { linkedin: "#" },
         },
       },
@@ -119,13 +115,13 @@ const teamsData: TeamData[] = [
         {
           name: "Megh Dave",
           role: "Outreach Executive",
-          image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Outreach1",
+          image: "/team/Megh.jpg",
           social: { linkedin: "#" },
         },
         {
           name: "Durvi Bangera",
           role: "Outreach Executive",
-          image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Outreach2",
+          image: "/team/durvi%20bangera.jpg",
           social: { linkedin: "#" },
         },
       ],
@@ -140,7 +136,7 @@ const teamsData: TeamData[] = [
         {
           name: "Heer Shah",
           role: "Creatives & Editorial Executive",
-          image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Creative2",
+          image: "/team/Heer.jpg",
           social: { linkedin: "#" },
         },
       ],
@@ -169,136 +165,19 @@ const teamsData: TeamData[] = [
       ],
     },
   },
-  // {
-  //   tenure: "2024",
-  //   board: {
-  //     cp: {
-  //       name: "Jainam Dedhia",
-  //       role: "Chairperson",
-  //       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Chairperson",
-  //       social: { linkedin: "#" },
-  //     },
-  //     vcpAdmin: {
-  //       name: "Bhargavi Naik",
-  //       role: "Vice Chairperson (Admin)",
-  //       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=VCPAdmin",
-  //       social: { linkedin: "#" },
-  //     },
-  //     vcpTech: {
-  //       name: "Akshat Singh",
-  //       role: "Vice Chairperson (Technical)",
-  //       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=VCPTech",
-  //       social: { linkedin: "#" },
-  //     },
-  //     secretary: {
-  //       name: "Shrawani Jagtap",
-  //       role: "Secretary",
-  //       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Secretary",
-  //       social: { linkedin: "#" },
-  //     },
-  //     treasurer: {
-  //       name: "Devansh Khandar",
-  //       role: "Treasurer",
-  //       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Treasurer",
-  //       social: { linkedin: "#" },
-  //     },
-  //     projectHead: {
-  //       name: "Om Kulkarni",
-  //       role: "Project Head",
-  //       image: "https://api.dicebear.com/7.x/avataaars/svg?seed=ProjectHead",
-  //       social: { linkedin: "#" },
-  //     },
-  //   },
-
-  //   departments: {
-  //     research: [
-  //       {
-  //         name: "Shiva Sukumar",
-  //         role: "Research Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Research1",
-  //         social: { linkedin: "#" },
-  //       },
-  //       {
-  //         name: "Mishri Parekh",
-  //         role: "Research Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Research2",
-  //         social: { linkedin: "#" },
-  //       },
-  //     ],
-
-  //     tech: {
-  //       ai: {
-  //         name: "Mihir Mashruwala",
-  //         role: "Tech-AI Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=TechAI",
-  //         social: { linkedin: "#" },
-  //       },
-  //       webdev: {
-  //         name: "Ketan Gaikwad",
-  //         role: "Tech-WebDev Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=WebDev",
-  //         social: { linkedin: "#" },
-  //       },
-  //     },
-
-  //     outreach: [
-  //       {
-  //         name: "Megh Dave",
-  //         role: "Outreach Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Outreach1",
-  //         social: { linkedin: "#" },
-  //       },
-  //       {
-  //         name: "Durvi Bangera",
-  //         role: "Outreach Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Outreach2",
-  //         social: { linkedin: "#" },
-  //       },
-  //     ],
-
-  //     creativesEditorial: [
-  //       {
-  //         name: "Ritika Doshi",
-  //         role: "Creatives & Editorial Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Creative1",
-  //         social: { linkedin: "#" },
-  //       },
-  //       {
-  //         name: "Heer Shah",
-  //         role: "Creatives & Editorial Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Creative2",
-  //         social: { linkedin: "#" },
-  //       },
-  //     ],
-
-  //     management: [
-  //       {
-  //         name: "Pratham Shah",
-  //         role: "Management Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Management1",
-  //         social: { linkedin: "#" },
-  //       },
-  //       {
-  //         name: "Dev Rupani",
-  //         role: "Management Executive",
-  //         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Management2",
-  //         social: { linkedin: "#" },
-  //       },
-  //     ],
-  //   },
-  // },
 ];
 
 const MemberCard = ({ member }: { member: Member }) => {
   return (
     <div className="group relative">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 transition-all duration-300 hover:scale-105 h-84 w-64">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 transition-all duration-300 hover:scale-105 h-[340px] w-64">
         {/* Full Body Image */}
-        <div className="relative  bg-gradient-to-b from-slate-800 to-slate-900 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900 overflow-hidden">
           {member.image ? (
             <img
               src={member.image}
               alt={member.name}
+              style={{ objectPosition: member.imagePosition || "center center" }}
               className="
     w-full h-full object-cover 
     grayscale group-hover:grayscale-0 transition-all duration-300
@@ -469,15 +348,15 @@ export default function TeamShowcase() {
               {/* Team Content */}
               <div
                 className={`overflow-hidden transition-all duration-500 ${expandedTenure === index
-                    ? "max-h-auto opacity-100"
-                    : "max-h-0 opacity-0"
+                  ? "max-h-auto opacity-100"
+                  : "max-h-0 opacity-0"
                   }`}
               >
                 <div className="p-8 space-y-12">
                   {/* ===== BOARD ===== */}
                   <div>
                     <h3 className="text-xl font-semibold mb-8 text-center tracking-wider">
-                      Board Members
+                      Core Members
                     </h3>
 
                     {/* Desktop Layout */}
@@ -539,7 +418,6 @@ export default function TeamShowcase() {
                         Technical
                       </h4>
                       <div className="flex justify-center items-center w-full gap-6 md:gap-27 md:flex-row flex-col max-w-2xl">
-                        <MemberCard member={team.departments.tech.ai} />
                         <MemberCard member={team.departments.tech.webdev} />
                       </div>
                     </div>

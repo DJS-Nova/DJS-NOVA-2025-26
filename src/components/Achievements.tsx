@@ -38,7 +38,7 @@ interface Achievement {
 const RESEARCH_PAPER: Achievement = {
   id: "research",
   title: "Visibility graph approach to characterize planetary transit signatures: A case study on OGLE IV data",
-  description: "This groundbreaking research explores a novel visibility graph approach to analyze complex time-series data from OGLE IV. By transforming observational light curves into complex networks, the study enhances the detection and characterization of planetary transit signatures, pushing the boundaries of exoplanet discovery techniques.",
+  description: "Written by: Prof. Dr. Ankita B. Jain, Faculty Coordinator of DJS NOVA, and Yash Prajapati, Member of DJS NOVAs",
   date: "2025-01-01",
   category: "ScienceDirect",
   coverImage: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048&auto=format&fit=crop", // Space-themed background
@@ -46,7 +46,7 @@ const RESEARCH_PAPER: Achievement = {
   externalLink: "https://www.sciencedirect.com/science/article/abs/pii/S138410762600031X"
 };
 
-const OTHER_ACHIEVEMENTS: Achievement[] = [
+const PROVISIONAL_ACHIEVEMENTS: Achievement[] = [
   {
     id: "provisional",
     title: "Provisional Discoveries",
@@ -58,22 +58,15 @@ const OTHER_ACHIEVEMENTS: Achievement[] = [
       { url: "/achievements/Provisional%20Discoveries/IMG_4510.jpg", alt: "Certificate 1" },
       { url: "/achievements/Provisional%20Discoveries/IMG_4511.jpg", alt: "Certificate 2" }
     ]
-  },
-  {
-    id: "preliminary",
-    title: "Preliminary Detections",
-    description: "Multiple preliminary asteroid detections confirmed by the space campaign, showcasing team precision and observational skills.",
-    date: "2025-03-10",
-    category: "Asteroid Search Campaign",
-    coverImage: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0890.jpg",
-    gallery: [
-      { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0890.jpg", alt: "Detection 1" },
-      { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0898.JPG", alt: "Detection 2" },
-      { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0899.JPG", alt: "Detection 3" },
-      { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0900.JPG", alt: "Detection 4" },
-      { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0901.JPG", alt: "Detection 5" }
-    ]
   }
+];
+
+const PRELIMINARY_DETECTIONS: AchievementImage[] = [
+  { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0890.jpg", alt: "Detection 1" },
+  { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0898.JPG", alt: "Detection 2" },
+  { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0899.JPG", alt: "Detection 3" },
+  { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0900.JPG", alt: "Detection 4" },
+  { url: "/achievements/Asteroid%20Preliminary%20Detections/IMG_0901.JPG", alt: "Detection 5" }
 ];
 
 // --- Full Screen Lightbox ---
@@ -317,10 +310,11 @@ const AchievementCard = ({ achievement, onClick }: { achievement: Achievement; o
 // --- Main Page Component ---
 export default function AchievementsComponent() {
   const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
+  const [carouselLightboxIndex, setCarouselLightboxIndex] = useState<number | null>(null);
 
   // Prevent background scrolling when modal is open
   useEffect(() => {
-    if (selectedAchievement) document.body.style.overflow = "hidden";
+    if (selectedAchievement || carouselLightboxIndex !== null) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
 
     return () => { document.body.style.overflow = "auto" };
@@ -336,6 +330,18 @@ export default function AchievementsComponent() {
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
         .hidden-scrollbar::-webkit-scrollbar { display: none; }
+
+        @keyframes slideLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .carousel-track {
+          animation: slideLeft 25s linear infinite;
+          width: max-content;
+        }
+        .carousel-container:hover .carousel-track {
+          animation-play-state: paused;
+        }
       `}} />
 
       {/* Decorative Blur Orbs */}
@@ -367,15 +373,53 @@ export default function AchievementsComponent() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {OTHER_ACHIEVEMENTS.map((item) => (
+            {PROVISIONAL_ACHIEVEMENTS.map((item) => (
               <AchievementCard key={item.id} achievement={item} onClick={() => setSelectedAchievement(item)} />
             ))}
+          </div>
+        </div>
+
+        {/* Preliminary Detections Carousel */}
+        <div className="space-y-6 md:space-y-12 mt-16 md:mt-24">
+          <div className="flex items-center gap-4 md:gap-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Preliminary Detections</h2>
+            <div className="h-px bg-linear-to-r from-white/20 to-transparent flex-1" />
+          </div>
+
+          <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-[#0a0a0a]/40 backdrop-blur-md p-6 md:p-10 shadow-2xl">
+            <div className="absolute inset-y-0 left-0 w-32 pointer-events-none bg-linear-to-r from-[#050505]/90 via-[#050505]/50 to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-32 pointer-events-none bg-linear-to-l from-[#050505]/90 via-[#050505]/50 to-transparent z-10" />
+            <div className="carousel-container relative overflow-hidden">
+              <div className="carousel-track flex items-center gap-6 md:gap-8">
+                {[...PRELIMINARY_DETECTIONS, ...PRELIMINARY_DETECTIONS].map((img, idx) => (
+                  <div 
+                    key={`carousel-img-${idx}`} 
+                    className="relative group shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer border border-white/10 w-[280px] h-[200px] md:w-[400px] md:h-[280px] shadow-lg hover:border-amber-500/50 transition-colors"
+                    onClick={() => setCarouselLightboxIndex(idx % PRELIMINARY_DETECTIONS.length)}
+                  >
+                    <img src={img.url} alt={img.alt} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-75 group-hover:scale-100 drop-shadow-lg" size={24} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Master Modal for Gallery & Details */}
       <AchievementGalleryModal achievement={selectedAchievement} onClose={() => setSelectedAchievement(null)} />
+
+      {/* Lightbox for Carousel Images */}
+      <Lightbox
+        images={PRELIMINARY_DETECTIONS}
+        currentIndex={carouselLightboxIndex ?? 0}
+        isOpen={carouselLightboxIndex !== null}
+        onClose={() => setCarouselLightboxIndex(null)}
+        onNavigate={setCarouselLightboxIndex}
+      />
     </div>
   );
 }
