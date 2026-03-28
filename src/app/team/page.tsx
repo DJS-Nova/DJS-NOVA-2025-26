@@ -170,7 +170,7 @@ const teamsData: TeamData[] = [
 const MemberCard = ({ member }: { member: Member }) => {
   return (
     <div className="group relative">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 transition-all duration-300 hover:scale-105 h-[340px] w-64">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 transition-transform duration-300 md:hover:scale-105 will-change-transform h-[340px] w-64">
         {/* Full Body Image */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900 overflow-hidden">
           {member.image ? (
@@ -178,11 +178,7 @@ const MemberCard = ({ member }: { member: Member }) => {
               src={member.image}
               alt={member.name}
               style={{ objectPosition: member.imagePosition || "center center" }}
-              className="
-    w-full h-full object-cover 
-    grayscale group-hover:grayscale-0 transition-all duration-300
-    max-sm:grayscale-0
-  "
+              className="w-full h-full object-cover grayscale max-sm:grayscale-0 md:group-hover:grayscale-0 transition-[filter] duration-300 will-change-[filter]"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-6xl font-bold">
@@ -209,54 +205,13 @@ const MemberCard = ({ member }: { member: Member }) => {
 
           {/* Social Links - Show on hover */}
           {member.social && (
-            // <div className="flex gap-2 mt-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-            //   {member.social.linkedin && (
-            //     <a
-            //       href={member.social.linkedin}
-            //       target="_blank"
-            //       rel="noopener noreferrer"
-            //       className="flex items-center justify-center w-6 h-6 rounded-md bg-[#0a66c2] hover:brightness-110 transition-all"
-            //     >
-            //       <Linkedin size={16} fill="white" color="transprent"/>
-            //     </a>
-            //   )}
-            //   {member.social.github && (
-            //     <a
-            //       href={member.social.github}
-            //       target="_blank"
-            //       rel="noopener noreferrer"
-            //       className="flex items-center justify-center w-6 h-6 rounded-full bg-[#171515] hover:brightness-110 transition-all"
-            //     >
-            //       <Github size={16} color="white" />
-            //     </a>
-            //   )}
-            //   {member.social.email && (
-            //     <a
-            //       href={`mailto:${member.social.email}`}
-            //       className="flex items-center justify-center w-6 h-6 rounded-full bg-[#34A853] hover:brightness-110 transition-all"
-            //     >
-            //       <Mail size={16} color="white" />
-            //     </a>
-            //   )}
-            //   {member.social.instagram && (
-            //     <a
-            //       href={member.social.instagram}
-            //       target="_blank"
-            //       rel="noopener noreferrer"
-            //       className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:brightness-110 transition-all"
-            //     >
-            //       <Instagram size={16} color="white" />
-            //     </a>
-            //   )}
-            // </div>
-
             <div className="flex gap-2 mt-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               {member.social.linkedin && (
                 <a
                   href={member.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-all"
+                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-[filter] duration-200"
                 >
                   <Linkedin size={16} fill="white" color="transprent" />
                 </a>
@@ -266,7 +221,7 @@ const MemberCard = ({ member }: { member: Member }) => {
                   href={member.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-all"
+                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-[filter] duration-200"
                 >
                   <Github size={16} color="white" />
                 </a>
@@ -274,7 +229,7 @@ const MemberCard = ({ member }: { member: Member }) => {
               {member.social.email && (
                 <a
                   href={`mailto:${member.social.email}`}
-                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-all"
+                  className="flex items-center justify-center w-6 h-6 rounded-full  hover:brightness-110 transition-[filter] duration-200"
                 >
                   <Mail size={16} color="white" />
                 </a>
@@ -284,7 +239,7 @@ const MemberCard = ({ member }: { member: Member }) => {
                   href={member.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-6 h-6 rounded-full hover:brightness-110 transition-all"
+                  className="flex items-center justify-center w-6 h-6 rounded-full hover:brightness-110 transition-[filter] duration-200"
                 >
                   <Instagram size={16} color="white" />
                 </a>
@@ -294,7 +249,7 @@ const MemberCard = ({ member }: { member: Member }) => {
         </div>
 
         {/* Glowing effect on hover */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       </div>
     </div>
   );
