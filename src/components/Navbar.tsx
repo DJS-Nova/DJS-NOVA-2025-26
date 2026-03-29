@@ -17,7 +17,7 @@ const Navbar = () => {
       url: "/astrophotography",
       icon: <Camera size={18} />,
     },
-    { name: "Team", url: "/team", icon: <Users size={18} /> },
+    // { name: "Team", url: "/team", icon: <Users size={18} /> },
     { name: "Event", url: "/event", icon: <CalendarDays size={18} /> },
     { name: "Achievements", url: "/achievements", icon: <Trophy size={18} /> },
     // { name: "Moon Gazing 2.0", url: "https://moongazing.djsnova.space", icon: <CalendarDays size={18} />, onblank: true },

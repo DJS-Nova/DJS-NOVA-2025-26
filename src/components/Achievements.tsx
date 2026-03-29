@@ -38,7 +38,7 @@ interface Achievement {
 const RESEARCH_PAPER: Achievement = {
   id: "research",
   title: "Visibility graph approach to characterize planetary transit signatures: A case study on OGLE IV data",
-  description: "Written by: Prof. Dr. Ankita B. Jain, Faculty Coordinator of DJS NOVA, and Yash Prajapati, Member of DJS NOVAs",
+  description: "Written by: Dr. Ankita B. Jain, Faculty Coordinator of DJS NOVA, and Yash Prajapati, Member of DJS NOVA",
   date: "2025-01-01",
   category: "ScienceDirect",
   coverImage: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048&auto=format&fit=crop", // Space-themed background
@@ -57,6 +57,17 @@ const PROVISIONAL_ACHIEVEMENTS: Achievement[] = [
     gallery: [
       { url: "/achievements/Provisional%20Discoveries/IMG_4510.jpg", alt: "Certificate 1" },
       { url: "/achievements/Provisional%20Discoveries/IMG_4511.jpg", alt: "Certificate 2" }
+    ]
+  },
+  {
+    id: "iaac",
+    title: "IAAC Awards",
+    description: "Congratulations to all the winners! Here are the names from the IAAC Awards lists, organized by their respective honours:\n\nGold Honour:\nMohit Shah, Rishiraj Joisher, Akshat Singh, Laxmi Prajapati, Jainam Dedhia, Shiva Sukumar\n\nSilver Honour:\nRonak Shah, Srushti Joshi, Mahek Shah, Mishri Parekh, Bansi Sampat, Shrawani Jagtap, Krishi Nisar",
+    date: "2025-03-29",
+    category: "International Competition",
+    coverImage: "/achievements/Iaac/Jainam%20Dedhia.jpeg",
+    gallery: [
+      { url: "/achievements/Iaac/Jainam%20Dedhia.jpeg", alt: "IAAC Certificate" }
     ]
   }
 ];
@@ -169,7 +180,7 @@ const AchievementGalleryModal = ({ achievement, onClose }: { achievement: Achiev
               </div>
 
               <div className="prose prose-invert prose-sm md:prose-base text-white/60 leading-relaxed font-light">
-                <p>{achievement.description}</p>
+                <p className="whitespace-pre-wrap">{achievement.description}</p>
               </div>
             </div>
           </div>
@@ -368,7 +379,7 @@ export default function AchievementsComponent() {
         {/* Discovery Grids */}
         <div className="space-y-6 md:space-y-12">
           <div className="flex items-center gap-4 md:gap-6">
-            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Campaign Discoveries</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Discoveries & Awards</h2>
             <div className="h-px bg-linear-to-r from-white/20 to-transparent flex-1" />
           </div>
 
@@ -392,8 +403,8 @@ export default function AchievementsComponent() {
             <div className="carousel-container relative overflow-hidden">
               <div className="carousel-track flex items-center gap-6 md:gap-8">
                 {[...PRELIMINARY_DETECTIONS, ...PRELIMINARY_DETECTIONS].map((img, idx) => (
-                  <div 
-                    key={`carousel-img-${idx}`} 
+                  <div
+                    key={`carousel-img-${idx}`}
                     className="relative group shrink-0 rounded-2xl md:rounded-3xl overflow-hidden cursor-pointer border border-white/10 w-[280px] h-[200px] md:w-[400px] md:h-[280px] shadow-lg hover:border-amber-500/50 transition-colors"
                     onClick={() => setCarouselLightboxIndex(idx % PRELIMINARY_DETECTIONS.length)}
                   >
