@@ -397,10 +397,14 @@ export default function AchievementsComponent() {
             <div className="h-px bg-linear-to-r from-white/20 to-transparent flex-1" />
           </div>
 
-          <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-[#0a0a0a]/40 backdrop-blur-md p-6 md:p-10 shadow-2xl">
-            <div className="absolute inset-y-0 left-0 w-32 pointer-events-none bg-linear-to-r from-[#050505]/90 via-[#050505]/50 to-transparent z-10" />
-            <div className="absolute inset-y-0 right-0 w-32 pointer-events-none bg-linear-to-l from-[#050505]/90 via-[#050505]/50 to-transparent z-10" />
-            <div className="carousel-container relative overflow-hidden">
+          <div className="relative overflow-hidden rounded-4xl p-6 md:p-10 shadow-2xl">
+            <div
+              className="carousel-container relative overflow-hidden"
+              style={{
+                maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+              }}
+            >
               <div className="carousel-track flex items-center gap-6 md:gap-8">
                 {[...PRELIMINARY_DETECTIONS, ...PRELIMINARY_DETECTIONS].map((img, idx) => (
                   <div
