@@ -38,7 +38,7 @@ interface Achievement {
 const RESEARCH_PAPER: Achievement = {
   id: "research",
   title: "Visibility graph approach to characterize planetary transit signatures: A case study on OGLE IV data",
-  description: "Written by Yash Prajapati (Co-com Member, DJS NOVA), under the guidance of Dr. Moses Kartha (DJSCE), and coordinated by Dr. Ankita B. Jain (Faculty Coordinator, DJS NOVA)",
+  description: "Written by: Yash Prajapati (Co-com Member, DJS NOVA), under the guidance of Dr. Moses Kartha (DJSCE), and coordinated by Dr. Ankita B. Jain (Faculty Coordinator, DJS NOVA)",
   date: "2025-01-01",
   category: "ScienceDirect",
   coverImage: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048&auto=format&fit=crop", // Space-themed background
